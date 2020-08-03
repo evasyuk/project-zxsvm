@@ -29,7 +29,7 @@ module.exports = {
     ],
     entry: path.resolve(__dirname, "../index.js"),
     output: {
-        path: __dirname + '/dist',
+        path: __dirname + '../dist',
         filename: 'index_bundle.js'
     },
 };
