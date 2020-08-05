@@ -2,7 +2,7 @@
   "name": "project-zxsvm",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --config cfg/webpack.config.js --open --mode development",
@@ -21,9 +21,12 @@
   "devDependencies": {
     "@babel/core": "^7.11.0",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-export-default-from": "^7.10.4",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
     "babel-loader": "^8.1.0",
+    "eslint": "^7.6.0",
+    "eslint-plugin-react": "^7.20.5",
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.3.0",
     "webpack": "^4.44.1",
@@ -31,8 +34,21 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@material-ui/core": "^5.0.0-alpha.5",
+    "axios": "^0.19.2",
+    "intl": "^1.2.5",
+    "lodash": "^4.17.19",
+    "notistack": "^0.9.17",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-intl": "^5.4.5",
+    "react-redux": "^7.2.1",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-logger": "^3.0.6",
+    "reselect": "^4.0.0",
     "styled-components": "^5.1.1"
   }
 }

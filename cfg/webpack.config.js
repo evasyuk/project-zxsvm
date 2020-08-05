@@ -5,7 +5,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
+                test: /\.(web.js|js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader"
@@ -27,7 +27,7 @@ module.exports = {
             template: 'cfg/index.hbs'
         })
     ],
-    entry: path.resolve(__dirname, "../index.js"),
+    entry: path.resolve(__dirname, "../src/index.js"),
     output: {
         path: __dirname + '../dist',
         filename: 'index_bundle.js'
