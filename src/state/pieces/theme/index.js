@@ -7,6 +7,13 @@ const default_state = {
         main: '#00FF92',
         secondary: '#009920',
         error: '#D50000',
+        red: '#ff0000',
+        white: '#ffffff',
+        gray100: '#f8f8f8',
+        gray200: '#dadada',
+        gray300: '#a0a4a8',
+        gray400: '#ececec',
+        gray500: '#323237',
     },
     fontSizes: {
         main: '16px',

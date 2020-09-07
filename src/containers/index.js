@@ -5,4 +5,4 @@ export { default as RestorePasswordPage } from './RestorePasswordContainer'
 export { default as PrivacyContainer } from './PrivacyContainer'
 export { default as SettingsPage } from './SettingsContainer'
 export { default as ProfilePage } from './ProfileContainer'
-
+export { default as LandingPage } from './LandingPage'

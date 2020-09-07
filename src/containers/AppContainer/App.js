@@ -28,6 +28,8 @@ class App extends Component {
         // this.props.getAvailableLanguages()
         // this.props.getLocales(currentLanguage)
         // this.props.getTermsOfUse(currentLanguage)
+
+        console.log('App did mount')
     }
 
     componentDidCatch(error, info) {

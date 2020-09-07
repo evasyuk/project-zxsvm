@@ -4,5 +4,6 @@ export const ROUTES = {
     PRIVACY: '/privacy',
     LOGIN: '/login',
     RESTORE: '/restore',
-    MAIN: '/'
+    HOME: '/home',
+    LANDING: '/',
 }

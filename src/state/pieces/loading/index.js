@@ -3,7 +3,7 @@ export const TYPES_LOADING = {
 }
 
 const default_state = {
-    is_loading: true,
+    is_loading: false,
 }
 
 export const setLoading = (value = false) => ({

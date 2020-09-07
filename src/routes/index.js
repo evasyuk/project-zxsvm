@@ -7,6 +7,7 @@ import {
   PrivacyContainer,
   RestorePasswordPage,
   MainContainer,
+  LandingPage,
 } from '../containers'
 
 const routes = [
@@ -42,7 +43,13 @@ const routes = [
   },
   {
     id: 6,
-    path: ROUTES.MAIN,
+    path: ROUTES.LANDING,
+    exact: true,
+    component: LandingPage,
+  },
+  {
+    id: 7,
+    path: ROUTES.HOME,
     exact: true,
     component: MainContainer,
   },

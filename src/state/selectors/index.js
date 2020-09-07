@@ -4,7 +4,7 @@ import { flattenMessages } from '../../helpers/flattenMessages'
 
 export const getThemeStyles = createSelector(
     state => state.theme,
-    theme => theme.colors,
+    theme => theme,
 )
 
 export const getNotificationMessage = () => {}
