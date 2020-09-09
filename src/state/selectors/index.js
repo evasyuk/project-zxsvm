@@ -16,7 +16,8 @@ export const getLoadingStatus = createSelector(
 
 export const getFlatTranslations = createSelector(
     state => state.locale,
-    locale => flattenMessages(locale)
+    locale => locale.translations,
+    ({ translations }) => flattenMessages(translations)
 )
 
 export const getIsLoggedInStatus = () => false

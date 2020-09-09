@@ -1,11 +1,18 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-export const TitleWrap = styled(Link)`
-  color: ${({ theme }) => {
-      console.log('?? theme', theme)
-      return theme.colors.gray500
-}};
+export const TitleWrapLink = styled(Link)`
+  color: ${({ theme }) => theme.colors.gray500};
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+  cursor: ${({ withback }) => (withback ? 'pointer' : 'default')};
+  pointer-events: ${({ withback }) => (withback ? 'auto' : 'none')};
+  text-decoration: none;
+`
+
+export const TitleWrap = styled.div`
+  color: ${({ theme }) => theme.colors.gray500};
   display: inline-flex;
   align-items: center;
   overflow: hidden;

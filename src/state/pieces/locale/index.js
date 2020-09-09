@@ -1,17 +1,17 @@
+import translations from '../../../constants/translations'
+
 export const TYPES_LANG = {
 
 }
 
 const default_state = {
-    lang: 'en',
-    translations: {
-        login: {
-            welcome: 'Welcome!',
-            email_hint: 'Email',
-            password_hint: 'Password',
-            submit: 'Submit'
-        }
-    }
+    languages: [
+        {
+            lang_key: 'en',
+            lang_label: 'English',
+        },
+    ],
+    translations,
 }
 
 export const reducer_locale = (state = default_state, action) => {

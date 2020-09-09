@@ -24,6 +24,7 @@ const default_state = {
         bold: 500,
         bolder: 700,
     },
+    borderRadius: '20px',
     companyLogo: '',
     companyName: '',
 }

@@ -1,33 +1,46 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
 
-import { Title } from '../../components'
+import { injectIntl } from 'react-intl'
 
-const Wrapper = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`
+import { Title, Text, Button } from '../../components'
 
-const WrapperFull = styled.div`
-    width: 480px;
-    height: 320px;
-    padding: 20px;
-    border-radius: 20px;
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
-    background-color: white;
-`
+import { LoginForm } from './components'
+
+import {
+    WrapperFull,
+    LeftSideWrapper,
+    ButtonWrapper,
+    RightSideWrapper,
+    RideSideContainer,
+    Wrapper,
+} from './styles'
 
 class Login extends Component {
+
+    onLogin = () => {
+        console.log('onLogin pressed')
+    }
 
     renderFull = () => {
         return (
             <WrapperFull>
-                <p>lol</p>
+                <LeftSideWrapper>
+                    <ButtonWrapper>
+                        <LoginForm intl={this.props.intl} onLogin={this.onLogin} />
+                    </ButtonWrapper>
+                </LeftSideWrapper>
+                <RightSideWrapper>
+                    <RideSideContainer>
+                        <Title title={"Hello, friend!"} />
+                        <ButtonWrapper>
+                            <Text>Fill up personal info</Text>
+                            <Text>and start your journey!</Text>
+                        </ButtonWrapper>
+                        <ButtonWrapper>
+                            <Button title={"Sign Up"} />
+                        </ButtonWrapper>
+                    </RideSideContainer>
+                </RightSideWrapper>
             </WrapperFull>
         )
     }
@@ -41,4 +54,4 @@ class Login extends Component {
     }
 }
 
-export default Login
+export default injectIntl(Login)
