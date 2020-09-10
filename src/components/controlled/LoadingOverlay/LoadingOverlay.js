@@ -6,7 +6,7 @@ import { getLoadingStatus } from '../../../state/selectors'
 
 import Loading from '../../base/Loading'
 
-const LoadingOverlay = props => <Loading {...props} />
+const LoadingOverlay = (props) => <Loading {...props} />
 
 LoadingOverlay.propTypes = {
   isVisible: bool.isRequired,
@@ -17,7 +17,7 @@ LoadingOverlay.defaultProps = {
   selector: null,
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isVisible: getLoadingStatus(state) || false,
 })
 

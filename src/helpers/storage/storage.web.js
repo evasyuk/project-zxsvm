@@ -1,15 +1,15 @@
-export const getItemAsync = key =>
-  new Promise(resolve => {
+export const getItemAsync = (key) =>
+  new Promise((resolve) => {
     resolve(window.localStorage.getItem(key))
   })
 
-export const removeItemAsync = key =>
-  new Promise(resolve => {
+export const removeItemAsync = (key) =>
+  new Promise((resolve) => {
     resolve(window.localStorage.removeItem(key))
   })
 
 export const setItemAsync = (key, value) =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     resolve(window.localStorage.setItem(key, value))
   })
 

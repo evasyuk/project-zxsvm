@@ -12,34 +12,31 @@ const PrivateRoute = ({
   location,
   ...rest
 }) => (
-    <Route
-        {...rest}
-        render={props =>
-            isLoggedIn ? (
-                <Component {...props} />
-            ) : (
-                <Redirect
-                    to={{
-                        pathname: ROUTES.LOGIN,
-                        state: { from: location },
-                    }}
-                />
-            )
-        }
-    />
+  <Route
+    {...rest}
+    render={(props) =>
+      isLoggedIn ? (
+        <Component {...props} />
+      ) : (
+        <Redirect
+          to={{
+            pathname: ROUTES.LOGIN,
+            state: { from: location },
+          }}
+        />
+      )
+    }
+  />
 )
 
 PrivateRoute.propTypes = {
-    component: propTypes.func.isRequired,
-    isLoggedIn: propTypes.bool.isRequired,
-    location: propTypes.object.isRequired,
+  component: propTypes.func.isRequired,
+  isLoggedIn: propTypes.bool.isRequired,
+  location: propTypes.object.isRequired,
 }
 
-const mapStateToProps = state => ({
-    isLoggedIn: getIsLoggedInStatus(state),
+const mapStateToProps = (state) => ({
+  isLoggedIn: getIsLoggedInStatus(state),
 })
 
-export default connect(
-    mapStateToProps,
-    null,
-)(PrivateRoute)
+export default connect(mapStateToProps, null)(PrivateRoute)

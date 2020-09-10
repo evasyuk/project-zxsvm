@@ -1,32 +1,32 @@
-import React, { useRef } from 'react';
-import { bool, func, oneOfType, node, object } from 'prop-types';
+import React, { useRef } from 'react'
+import { bool, func, oneOfType, node, object, string } from 'prop-types'
 
-import { Wrapper, Backdrop, Container } from './styles';
+import { Wrapper, Backdrop, Container } from './styles'
 
 const Modal = ({ id, open, children, close }) => {
-  const handleClose = () => close(false);
+  const handleClose = () => close(false)
 
-  const mouseDownTarget = useRef();
+  const mouseDownTarget = useRef()
 
-  const handleMouseDown = e => {
-    mouseDownTarget.current = e.target;
-  };
+  const handleMouseDown = (e) => {
+    mouseDownTarget.current = e.target
+  }
 
-  const handleBackdropClick = e => {
+  const handleBackdropClick = (e) => {
     if (e.target !== e.currentTarget) {
-      return;
+      return
     }
 
     if (e.target !== mouseDownTarget.current) {
-      return;
+      return
     }
 
-    mouseDownTarget.current = null;
+    mouseDownTarget.current = null
 
     if (handleClose) {
-      handleClose(e, 'backdropClick');
+      handleClose(e, 'backdropClick')
     }
-  };
+  }
 
   return (
     <Wrapper id={id} open={!!open}>
@@ -34,17 +34,19 @@ const Modal = ({ id, open, children, close }) => {
         <Container>{children}</Container>
       </Backdrop>
     </Wrapper>
-  );
-};
+  )
+}
 
 Modal.propTypes = {
+  id: string,
   open: oneOfType([bool, object]),
   close: func,
   children: node,
-};
+}
 
 Modal.defaultProps = {
+  id: 'null',
   open: false,
-};
+}
 
-export default Modal;
+export default Modal

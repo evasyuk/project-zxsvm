@@ -1,14 +1,13 @@
 import { connect } from 'react-redux'
-import Notification from './Notification'
+import NotificationItem from './NotificationItem'
+
 import { clearNotification } from '../../../state/actions'
 import { getNotificationMessage } from '../../../state/selectors'
 
 const actions = { clearNotification }
-const mapStateToProps = state => ({
+
+const mapStateToProps = (state) => ({
   notificationMessage: getNotificationMessage(state),
 })
 
-export default connect(
-  mapStateToProps,
-  actions,
-)(Notification)
+export default connect(mapStateToProps, actions)(NotificationItem)

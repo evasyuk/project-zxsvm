@@ -5,8 +5,8 @@ import { IntlProvider as ReactIntlProvider } from 'react-intl'
 
 import { getFlatTranslations } from '../../../state/selectors'
 
-const IntlProvider = props => {
-  const { locale, messages } = useSelector(state => ({
+const IntlProvider = (props) => {
+  const { locale, messages } = useSelector((state) => ({
     locale: 'en',
     messages: getFlatTranslations(state),
   }))

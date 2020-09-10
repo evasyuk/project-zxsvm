@@ -1,22 +1,26 @@
 import React from 'react'
 import { func, string } from 'prop-types'
 import { withSnackbar } from 'notistack'
-import { Icon } from '../../../components'
 import styled from 'styled-components'
+
+import { Icon } from '..'
 
 export const IconWrapper = styled.div``
 
-class Notification extends React.Component {
-  static propTypes = {
-    clearNotification: func,
-    closeSnackbar: func,
-    notificationMessage: string,
-  }
-  static defaultProps = {
-    clearNotification: () => {},
-    notificationMessage: '',
-  }
+NotificationItem.propTypes = {
+  clearNotification: func,
+  closeSnackbar: func,
+  notificationMessage: string,
+  enqueueSnackbar: func,
+}
 
+NotificationItem.defaultProps = {
+  clearNotification: () => {},
+  enqueueSnackbar: () => {},
+  notificationMessage: '',
+}
+
+class NotificationItem extends React.Component {
   componentDidUpdate(prevProps) {
     const {
       closeSnackbar,
@@ -25,11 +29,15 @@ class Notification extends React.Component {
       enqueueSnackbar,
     } = this.props
 
-    const action = key => (
-      <IconWrapper onClick={() => { closeSnackbar(key) }}>
+    const action = (key) => (
+      <IconWrapper
+        onClick={() => {
+          closeSnackbar(key)
+        }}
+      >
         <Icon name="close" color="currentColor" width={20} height={20} />
       </IconWrapper>
-    );
+    )
 
     if (
       prevProps.notificationMessage !== notificationMessage &&
@@ -48,9 +56,10 @@ class Notification extends React.Component {
       clearNotification()
     }
   }
+
   render() {
     return null
   }
 }
 
-export default withSnackbar(Notification)
+export default withSnackbar(NotificationItem)

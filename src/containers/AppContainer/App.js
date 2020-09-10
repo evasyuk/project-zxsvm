@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { connect } from 'react-redux' // ToDo: move as independent
+// import { connect } from 'react-redux' // ToDo: move as independent
 
 import { clearStorage } from '../../helpers/storage'
 // import {
@@ -16,42 +16,42 @@ import { AppCrashModal } from '../../components/modals'
 import AppRouter from './AppRouter'
 
 class App extends Component {
-    state = {
-        showDialog: false,
-        error: null,
-        info: null,
-    }
+  state = {
+    showDialog: false,
+    error: null,
+    // info: null,
+  }
 
-    componentDidMount() {
-        // const { currentLanguage } = this.props
+  componentDidMount() {
+    // const { currentLanguage } = this.props
 
-        // this.props.getAvailableLanguages()
-        // this.props.getLocales(currentLanguage)
-        // this.props.getTermsOfUse(currentLanguage)
+    // this.props.getAvailableLanguages()
+    // this.props.getLocales(currentLanguage)
+    // this.props.getTermsOfUse(currentLanguage)
 
-        console.log('App did mount')
-    }
+    console.log('App did mount')
+  }
 
-    componentDidCatch(error, info) {
-        this.setState({ error, info, showDialog: true })
-        console.log(error, info)
-    }
+  componentDidCatch(error, info) {
+    this.setState({ error, showDialog: true })
+    console.log(error, info)
+  }
 
-    handleCrash = () => {
-        // reportError(this.state.error)
-        clearStorage()
-        window.location.reload()
-    }
+  handleCrash = () => {
+    // reportError(this.state.error)
+    clearStorage()
+    window.location.reload()
+  }
 
-    render() {
-        const { showDialog, error } = this.state
+  render() {
+    const { showDialog, error } = this.state
 
-        return error ? (
-            <AppCrashModal isVisible={showDialog} onPress={this.handleCrash} />
-        ) : (
-            <AppRouter />
-        )
-    }
+    return error ? (
+      <AppCrashModal isVisible={showDialog} onPress={this.handleCrash} />
+    ) : (
+      <AppRouter />
+    )
+  }
 }
 
 // const mapStateToProps = state => ({
@@ -65,6 +65,4 @@ class App extends Component {
 //     changeModalState,
 // }
 
-export default withRouter(
-    App
-)
+export default withRouter(App)

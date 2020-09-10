@@ -1,24 +1,25 @@
-import React from "react";
-import { render } from "react-dom";
-import { Provider } from "react-redux";
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
 
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 import {
-    IntlProvider,
-    ThemeProvider,
-    // NotificationProvider,
-    // Notification,
-    LoadingOverlay,
-} from "./components"
+  IntlProvider,
+  ThemeProvider,
+  // NotificationProvider,
+  // Notification,
+} from './components'
 
-import { Router } from "./routes"
+import { LoadingOverlay } from './components/controlled'
 
-import { App } from "./containers"
+import { Router } from './routes'
+
+import { App } from './containers'
 
 import { store } from './state'
 
-const target = document.querySelector("#app")
+const target = document.querySelector('#app')
 const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;
@@ -35,23 +36,23 @@ const GlobalStyles = createGlobalStyle`
 `
 
 render(
-    <Provider store={store}>
-       <ThemeProvider>
-         <IntlProvider>
+  <Provider store={store}>
+    <ThemeProvider>
+      <IntlProvider>
+        <>
+          <GlobalStyles />
+          <Router>
+            {/* <NotificationProvider maxSnack={3}> */}
             <>
-                <GlobalStyles />
-                <Router>
-                    {/*<NotificationProvider maxSnack={3}>*/}
-                        <>
-                            <App />
-                            {/*<Notification />*/}
-                            <LoadingOverlay />
-                        </>
-                    {/*</NotificationProvider>*/}
-                </Router>
+              <App />
+              {/* <Notification /> */}
+              <LoadingOverlay />
             </>
-            </IntlProvider>
-        </ThemeProvider>
-    </Provider>,
-    target,
+            {/* </NotificationProvider> */}
+          </Router>
+        </>
+      </IntlProvider>
+    </ThemeProvider>
+  </Provider>,
+  target,
 )

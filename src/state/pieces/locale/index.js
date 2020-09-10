@@ -1,22 +1,20 @@
 import translations from '../../../constants/translations'
 
-export const TYPES_LANG = {
+export const TYPES_LANG = {}
 
+const defaultState = {
+  languages: [
+    {
+      lang_key: 'en',
+      lang_label: 'English',
+    },
+  ],
+  translations,
 }
 
-const default_state = {
-    languages: [
-        {
-            lang_key: 'en',
-            lang_label: 'English',
-        },
-    ],
-    translations,
-}
-
-export const reducer_locale = (state = default_state, action) => {
-    switch (action.type) {
-        default:
-            return state
-    }
+export const reducerLocale = (state = defaultState, action) => {
+  switch (action.type) {
+    default:
+      return state
+  }
 }

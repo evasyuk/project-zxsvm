@@ -1,5 +1,5 @@
 const dsn = false
-export const reportError = error => {
+export const reportError = (error) => {
   if (!error) {
     console.log('no error passed!')
     return

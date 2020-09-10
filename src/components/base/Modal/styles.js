@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   display: ${({ open }) => (open ? 'block' : 'none')};
-`;
+`
 
 export const Backdrop = styled.div`
   display: flex;
@@ -25,7 +25,7 @@ export const Backdrop = styled.div`
       opacity: 1;
     }
   }
-`;
+`
 
 export const Container = styled.div`
   display: flex;
@@ -46,22 +46,22 @@ export const Container = styled.div`
       transform: translate(0, 0);
     }
   }
-`;
+`
 
 // Not production styles
 export const WrapperInner = styled.div`
   display: flex;
-`;
+`
 
 export const StepsWrapper = styled.div`
   width: 160px;
   padding: 15px 20px 10px;
   border-right: 1px solid ${({ theme }) => theme.colors.gray400};
-`;
+`
 
 export const Body = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
   width: 560px;
-`;
+`

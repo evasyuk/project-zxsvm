@@ -1,6 +1,5 @@
 import { SnackbarProvider as NotificationProvider } from 'notistack'
+import Icon from './Icon'
+import Notification from './Notification'
 
-export { NotificationProvider }
-
-export { default as Icon } from './Icon'
-export { default as Notification } from './Notification'
+export { NotificationProvider, Icon, Notification }

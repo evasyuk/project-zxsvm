@@ -4,8 +4,8 @@ import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 
 import { getThemeStyles } from '../../../state/selectors'
 
-const ThemeProvider = props => {
-  const { theme } = useSelector(state => ({
+const ThemeProvider = (props) => {
+  const { theme } = useSelector((state) => ({
     theme: getThemeStyles(state),
   }))
 

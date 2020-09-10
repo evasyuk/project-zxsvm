@@ -1,7 +1,7 @@
-import { store } from '../state'
-import { setMissingAuth } from '../state/actions'
-
+/* eslint-disable no-underscore-dangle */
 import axios from 'axios'
+// import { setMissingAuth } from '../state/actions'
+
 import { API_URI, TOKEN } from '../constants'
 
 import { getItemAsync, removeItemAsync, setItemAsync } from '../helpers/storage'
@@ -10,7 +10,7 @@ class ApiClient {
   constructor() {
     ApiClient.singleton = this
 
-    getItemAsync(TOKEN).then(res => {
+    getItemAsync(TOKEN).then((res) => {
       this.token = res || null
     })
     this.client = axios.create({
@@ -19,13 +19,12 @@ class ApiClient {
     })
 
     this.client.interceptors.response.use(
-      response => {
-        return response
-      },
-      function(error) {
+      (response) => response,
+      (error) => {
         console.log('unauthorized, need to login in again')
         if (!error.response.request.responseURL.endsWith('login')) {
-          store.dispatch(setMissingAuth())
+          // store.dispatch(setMissingAuth())
+          console.log('axios response error', 'login')
         }
         return Promise.reject(error)
       },
@@ -75,10 +74,11 @@ class ApiClient {
     if (body) bodyParams = body
 
     return this.client[method](`/${version}/${url}`, bodyParams, config)
-      .then(response => {
-        // console.log(url, method, params, body, response)
-        return response
-      })
+      .then(
+        (response) =>
+          // console.log(url, method, params, body, response)
+          response,
+      )
       .then(({ data }) => data)
   }
 }

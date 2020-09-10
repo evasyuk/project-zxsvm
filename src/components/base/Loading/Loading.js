@@ -3,10 +3,8 @@ import { bool, string } from 'prop-types'
 
 import { Spinner } from './styles'
 
-const Loading = ({ isVisible, selector, theme }) =>
-  isVisible ? (
-    <Spinner data-selector={selector}/>
-  ) : null
+const Loading = ({ isVisible, selector }) =>
+  isVisible ? <Spinner data-selector={selector} /> : null
 
 Loading.propTypes = {
   isVisible: bool.isRequired,

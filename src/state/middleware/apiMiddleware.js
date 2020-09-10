@@ -1,7 +1,7 @@
 export default function apiMiddleware(api) {
-  return ({ dispatch, getState }) => next => action => {
+  return ({ dispatch, getState }) => (next) => (action) => {
     if (typeof action === 'function') {
-      return dispatch(action(selector => selector(getState())))
+      return dispatch(action((selector) => selector(getState())))
     }
 
     const { promise, types, ...rest } = action
@@ -13,8 +13,8 @@ export default function apiMiddleware(api) {
     next({ ...rest, type: REQUEST })
 
     return promise(api).then(
-      data => next({ ...rest, data, type: SUCCESS }),
-      error =>
+      (data) => next({ ...rest, data, type: SUCCESS }),
+      (error) =>
         next({
           ...rest,
           error:
