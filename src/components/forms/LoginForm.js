@@ -2,11 +2,11 @@ import React from 'react'
 import { Formik } from 'formik'
 import propTypes from 'prop-types'
 
-import { LoginSchema } from '../../../helpers/validationSchemas'
+import { LoginSchema } from '../../helpers/validationSchemas'
 
-import { Button, Input } from '../../../components'
+import { Button, Input } from '../index'
 
-import { ButtonWrapper } from '../styles'
+import { MarginTopWrapper } from '../styles'
 
 const LoginForm = ({ intl, onLogin }) => (
   <Formik
@@ -36,7 +36,7 @@ const LoginForm = ({ intl, onLogin }) => (
           onBlur={handleBlur}
           placeholder={intl.formatMessage({ id: 'LOG_IN.PASSWORD_INPUT' })}
         />
-        <ButtonWrapper>
+        <MarginTopWrapper>
           <Button
             type="submit"
             disabled={!values.password || !values.email}
@@ -44,7 +44,7 @@ const LoginForm = ({ intl, onLogin }) => (
             width="152px"
             id="loginButton"
           />
-        </ButtonWrapper>
+        </MarginTopWrapper>
       </form>
     )}
   </Formik>

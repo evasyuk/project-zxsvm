@@ -4,12 +4,13 @@ import { injectIntl } from 'react-intl'
 
 import { Title, Text, Button } from '../../components'
 
-import { LoginForm } from './components'
+import { LoginForm } from '../../components/forms'
+import { MarginTopWrapper, ModalWindow } from '../../components/styles'
+
+import { createSignUpModal } from '../../components/modals'
 
 import {
-  WrapperFull,
   LeftSideWrapper,
-  ButtonWrapper,
   RightSideWrapper,
   RideSideContainer,
   Wrapper,
@@ -21,25 +22,28 @@ class Login extends Component {
   }
 
   renderFull = () => (
-    <WrapperFull>
+    <ModalWindow>
       <LeftSideWrapper>
-        <ButtonWrapper>
-          <LoginForm intl={this.props.intl} onLogin={this.onLogin} />
-        </ButtonWrapper>
+        <MarginTopWrapper>
+          <Title title="Login" />
+          <MarginTopWrapper>
+            <LoginForm intl={this.props.intl} onLogin={this.onLogin} />
+          </MarginTopWrapper>
+        </MarginTopWrapper>
       </LeftSideWrapper>
       <RightSideWrapper>
         <RideSideContainer>
-          <Title title="Hello, friend!" />
-          <ButtonWrapper>
+          <Title title="New member?" />
+          <MarginTopWrapper>
             <Text>Fill up personal info</Text>
             <Text>and start your journey!</Text>
-          </ButtonWrapper>
-          <ButtonWrapper>
-            <Button title="Sign Up" />
-          </ButtonWrapper>
+          </MarginTopWrapper>
+          <MarginTopWrapper>
+            <Button title="Sign Up" onClick={createSignUpModal()} />
+          </MarginTopWrapper>
         </RideSideContainer>
       </RightSideWrapper>
-    </WrapperFull>
+    </ModalWindow>
   )
 
   render() {

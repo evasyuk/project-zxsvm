@@ -2,11 +2,6 @@ import styled from 'styled-components'
 
 export const RideSideContainer = styled.div``
 
-export const ButtonWrapper = styled.div`
-  margin-top: 35px;
-  text-align: center;
-`
-
 export const RightSideWrapper = styled.div`
     flex: 1
     
@@ -35,16 +30,4 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`
-
-export const WrapperFull = styled.div`
-  width: 480px;
-  height: 320px;
-
-  border-radius: 20px;
-  border-style: solid;
-  border-color: black;
-  border-width: 1px;
-  background-color: white;
-  display: flex;
 `

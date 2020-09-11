@@ -7,19 +7,6 @@ import { Icon } from '..'
 
 export const IconWrapper = styled.div``
 
-NotificationItem.propTypes = {
-  clearNotification: func,
-  closeSnackbar: func,
-  notificationMessage: string,
-  enqueueSnackbar: func,
-}
-
-NotificationItem.defaultProps = {
-  clearNotification: () => {},
-  enqueueSnackbar: () => {},
-  notificationMessage: '',
-}
-
 class NotificationItem extends React.Component {
   componentDidUpdate(prevProps) {
     const {
@@ -60,6 +47,19 @@ class NotificationItem extends React.Component {
   render() {
     return null
   }
+}
+
+NotificationItem.propTypes = {
+  clearNotification: func,
+  closeSnackbar: func,
+  notificationMessage: string,
+  enqueueSnackbar: func,
+}
+
+NotificationItem.defaultProps = {
+  clearNotification: () => {},
+  enqueueSnackbar: () => {},
+  notificationMessage: '',
 }
 
 export default withSnackbar(NotificationItem)

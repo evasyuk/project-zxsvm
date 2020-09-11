@@ -1,1 +1,4 @@
-export { default as AppCrashModal } from './AppCrashModal'
+import AppCrashModal from './AppCrashModal'
+import { createSignUpModal } from './SignUpModal'
+
+export { AppCrashModal, createSignUpModal }
