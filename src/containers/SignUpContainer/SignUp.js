@@ -7,7 +7,7 @@ import { ROUTES } from '../../constants/routes'
 
 import { Title, Text, Button } from '../../components'
 
-import { LoginForm } from '../../components/forms'
+import { SignUpForm } from '../../components/forms'
 import { MarginTopWrapper, ModalWindow } from '../../components/styles'
 
 import {
@@ -18,31 +18,38 @@ import {
 } from './styles'
 
 class SignUp extends Component {
-  onLogin = () => {
+  onLogin = () => this.props.history.push(ROUTES.LOGIN)
+
+  onDataProtection = () => this.props.history.replace(ROUTES.DATA_PROTECTION)
+
+  onSignUp = () => {
     console.log('onLogin pressed')
   }
-
-  onSignUp = () => this.props.history.replace(ROUTES.SIGN_UP)
 
   renderFull = () => (
     <ModalWindow>
       <LeftSideWrapper>
         <MarginTopWrapper>
-          <Title title="Log in" />
+          <Title title="Sign up" />
           <MarginTopWrapper>
-            <LoginForm intl={this.props.intl} onLogin={this.onLogin} />
+            <SignUpForm
+              intl={this.props.intl}
+              onSignUp={this.onSignUp}
+              onClose={this.onLogin}
+              onDataProtection={this.onDataProtection}
+            />
           </MarginTopWrapper>
         </MarginTopWrapper>
       </LeftSideWrapper>
       <RightSideWrapper>
         <RideSideContainer>
-          <Title title="New member?" />
+          <Title title="Already registered?" />
           <MarginTopWrapper>
-            <Text>Fill up personal info</Text>
-            <Text>and start your journey!</Text>
+            <Text>Try your luck</Text>
+            <Text>at login page</Text>
           </MarginTopWrapper>
           <MarginTopWrapper>
-            <Button title="Sign Up" onClick={this.onSignUp} />
+            <Button title="Log in" onClick={this.onLogin} />
           </MarginTopWrapper>
         </RideSideContainer>
       </RightSideWrapper>

@@ -44,10 +44,12 @@ class Input extends Component {
 
     return (
       <InputWrapper>
-        <Label error={!!error} htmlFor={id}>
-          {label}
-          {required && <RequiredBlock>*</RequiredBlock>}
-        </Label>
+        <LabelWrapper>
+          <Label error={!!error} htmlFor={id}>
+            {label}
+            {required && <RequiredBlock>*</RequiredBlock>}
+          </Label>
+        </LabelWrapper>
         <InputContainer error={!!error} label={label} searchable={searchable}>
           {startAdornment && <StartAdornment>{startAdornment}</StartAdornment>}
           {multiline ? (
@@ -132,6 +134,10 @@ const InputWrapper = styled.div`
   margin-bottom: 10px;
 `
 
+const LabelWrapper = styled.div`
+  display: flex;
+`
+
 const Label = styled.label`
   font-size: ${(props) => props.theme.fontSizes.sm};
   font-weight: ${(props) => props.theme.fontWeights.bold};
@@ -139,6 +145,8 @@ const Label = styled.label`
   color: ${(props) =>
     props.error ? props.theme.colors.red : props.theme.colors.gray500};
   cursor: pointer;
+
+  align-self: flex-start;
 `
 
 const InputContainer = styled.div`

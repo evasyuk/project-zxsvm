@@ -16,8 +16,14 @@ const defaultState = {
     gray500: '#323237',
   },
   fontSizes: {
-    main: '16px',
-    secondary: '14px',
+    xs: '10px',
+    s: '12px',
+    sm: '14px',
+    m: '15px',
+    md: '16px',
+    l: '17px',
+    xl: '20px',
+    xxl: '36px',
   },
   fontWeights: {
     normal: 400,

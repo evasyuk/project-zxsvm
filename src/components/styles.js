@@ -17,6 +17,7 @@ export const TopBackground = styled.div`
 
   position: absolute;
   pointer-events: none;
+  z-index: -1;
 `
 
 export const MarginTopWrapper = styled.div`
@@ -25,8 +26,8 @@ export const MarginTopWrapper = styled.div`
 `
 
 export const ModalWindow = styled.div`
-  width: 580px;
-  height: 420px;
+  height: 100vh;
+  width: 100vw;
 
   border-radius: 20px;
   border-style: solid;

@@ -4,12 +4,17 @@ import propTypes from 'prop-types'
 
 import { SignUpSchema } from '../../helpers/validationSchemas'
 
-import { Button, Input } from '../index'
+import { Button, Input, Checkbox, LinkButton } from '../index'
 
-import { ButtonsWrap, BtnContainer } from './styles'
+import {
+  ButtonsWrap,
+  BtnContainer,
+  AgreementWrap,
+  AgreementInner,
+} from './styles'
 // import { MarginTopWrapper } from '../styles'
 
-const SignUpForm = ({ intl, onSignUp, onClose }) => (
+const SignUpForm = ({ intl, onSignUp, onClose, onDataProtection }) => (
   <Formik
     initialValues={{
       sign_up_name: '',
@@ -111,6 +116,29 @@ const SignUpForm = ({ intl, onSignUp, onClose }) => (
             id: 'SIGN_UP.REPEAT_PASSWORD_INPUT',
           })}
         />
+        <AgreementWrap>
+          <Checkbox
+            id="sign_up_agreed"
+            checked={values.sign_up_agreed}
+            onChange={handleChange}
+            label={
+              <AgreementInner>
+                <span>
+                  {intl.formatMessage({
+                    id: 'SIGN_UP.TERMS_AND_AGREEMENT_LABEL',
+                  })}
+                  &nbsp;
+                </span>
+                <LinkButton
+                  onClick={onDataProtection}
+                  title={intl.formatMessage({
+                    id: 'SIGN_UP.TERMS_AND_AGREEMENT_LINK',
+                  })}
+                />
+              </AgreementInner>
+            }
+          />
+        </AgreementWrap>
         <ButtonsWrap>
           <Button
             onClick={onClose}
@@ -139,6 +167,7 @@ const SignUpForm = ({ intl, onSignUp, onClose }) => (
 SignUpForm.propTypes = {
   intl: propTypes.object.isRequired,
   onSignUp: propTypes.func.isRequired,
+  onDataProtection: propTypes.func.isRequired,
   onClose: propTypes.func,
 }
 

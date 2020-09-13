@@ -4,8 +4,6 @@ import { Provider } from 'react-redux'
 
 import { createGlobalStyle } from 'styled-components'
 
-import ModalController from 'react-modal-promise'
-
 import {
   IntlProvider,
   ThemeProvider,
@@ -14,6 +12,7 @@ import {
 } from './components'
 
 import { LoadingOverlay } from './components/controlled'
+import { ModalFactory } from './components/modals'
 
 import { Router } from './routes'
 
@@ -46,7 +45,7 @@ render(
           <Router>
             {/* <NotificationProvider maxSnack={3}> */}
             <>
-              <ModalController />
+              <ModalFactory />
               <App />
               {/* <Notification /> */}
               <LoadingOverlay />

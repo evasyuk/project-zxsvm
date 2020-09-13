@@ -1,4 +1,4 @@
 import AppCrashModal from './AppCrashModal'
-import { createSignUpModal } from './SignUpModal'
+import ModalFactory from './ModalFactory'
 
-export { AppCrashModal, createSignUpModal }
+export { AppCrashModal, ModalFactory }

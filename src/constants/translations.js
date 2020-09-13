@@ -17,6 +17,8 @@ const translations = {
     REPEAT_PASSWORD_INPUT: 'Repeat password',
     SIGN_UP_BUTTON: 'Sign up',
     CANCEL_BUTTON: 'Cancel',
+    TERMS_AND_AGREEMENT_LABEL: 'I agree with the',
+    TERMS_AND_AGREEMENT_LINK: 'data protection regulations',
   },
   VALIDATION_ERRORS: {
     EMAIL_REQUIRED: 'Email is required',
