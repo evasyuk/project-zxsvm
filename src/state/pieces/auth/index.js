@@ -15,12 +15,13 @@ export const setMissingAuth = () => ({
 
 export const login = () => ({
   type: TYPES_AUTH.LOGIN,
-  update: {},
+  update: { isLoggedIn: true },
 })
 
 export const reducerAuth = (state = defaultState, action) => {
   switch (action.type) {
     case TYPES_AUTH.MISSING_AUTH:
+    case TYPES_AUTH.LOGIN:
       return {
         ...state,
         ...action.update,

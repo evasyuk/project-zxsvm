@@ -11,7 +11,7 @@ import { MarginTopWrapper } from '../styles'
 const LoginForm = ({ intl, onLogin }) => (
   <Formik
     initialValues={{ email: '', password: '' }}
-    validationSchema={LoginSchema({ intl: null })}
+    validationSchema={LoginSchema({ intl })}
     onSubmit={(values) => onLogin(values.email, values.password)}
   >
     {({ values, errors, handleBlur, handleSubmit, handleChange, touched }) => (

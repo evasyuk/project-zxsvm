@@ -20,4 +20,7 @@ export const getFlatTranslations = createSelector(
   ({ translations }) => flattenMessages(translations),
 )
 
-export const getIsLoggedInStatus = () => false
+export const getIsLoggedInStatus = createSelector(
+  (state) => state.auth,
+  (auth) => auth.isLoggedIn,
+)

@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import propTypes from 'prop-types'
 import { injectIntl } from 'react-intl'
-import { withRouter } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+
+import { login } from '../../state/actions'
+import { getIsLoggedInStatus } from '../../state/selectors'
 
 import { ROUTES } from '../../constants/routes'
 
@@ -19,7 +23,8 @@ import {
 
 class SignUp extends Component {
   onLogin = () => {
-    console.log('onLogin pressed')
+    this.props.login()
+    this.props.history.replace(ROUTES.HOME)
   }
 
   onSignUp = () => this.props.history.replace(ROUTES.SIGN_UP)
@@ -50,6 +55,10 @@ class SignUp extends Component {
   )
 
   render() {
+    if (this.props.isLoggedIn) {
+      return <Redirect to={ROUTES.HOME} />
+    }
+
     return <Wrapper>{this.renderFull()}</Wrapper>
   }
 }
@@ -57,6 +66,19 @@ class SignUp extends Component {
 SignUp.propTypes = {
   intl: propTypes.object.isRequired,
   history: propTypes.object.isRequired,
+  login: propTypes.func.isRequired,
+  isLoggedIn: propTypes.bool.isRequired,
 }
 
-export default withRouter(injectIntl(SignUp))
+const mapStateToProps = (state) => ({
+  isLoggedIn: getIsLoggedInStatus(state),
+})
+
+const mapDispatchToProps = {
+  login,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(withRouter(injectIntl(SignUp)))

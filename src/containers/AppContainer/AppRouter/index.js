@@ -17,7 +17,7 @@ const AppRouter = () => (
     <Route path="/sign_up" component={SignUpPage} />
     <Route path="/data_protection" component={DataProtectionPage} />
     <Route path="/restore" component={RestorePasswordPage} />
-    <ProtectedRoute path="/" component={MainContainer} />
+    <ProtectedRoute path="/home" component={MainContainer} />
   </Switch>
 )
 
