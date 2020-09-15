@@ -43,6 +43,10 @@ const translations = {
       'Last name should contain only alphabet characters',
     LAST_NAME_REQUIRED: 'Last name is required',
   },
+  HEADER: {
+    PROFILE: 'Profile',
+    LOG_OUT: 'Log out',
+  },
 }
 
 export default translations

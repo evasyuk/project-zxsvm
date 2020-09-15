@@ -14,6 +14,18 @@ const defaultState = {
     gray300: '#a0a4a8',
     gray400: '#ececec',
     gray500: '#323237',
+    black: '#000000',
+  },
+  palette: {
+    primary: {
+      main: '#cddc39',
+    },
+    secondary: {
+      main: '#00e5ff',
+    },
+    error: {
+      main: '#f44336',
+    },
   },
   fontSizes: {
     xs: '10px',
