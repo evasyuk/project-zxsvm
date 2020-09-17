@@ -25,7 +25,23 @@ const generateFileFromVar = function (base64var, outFilePath = __dirname + '/dem
 }
 
 function runner() {
+  const inputArguments = process.argv.slice(2);
+  console.log('helperVar input arguments: ', inputArguments);
 
+  inputArguments.forEach((arg) => {
+    switch (arg) {
+      case 'FIREBASE_JSON':
+        if (process.env[arg]) {
+          console.log('success: actual FIREBASE_JSON value found')
+          generateFileFromVar(process.env[arg], __dirname + '/../firebase.json')
+        } else {
+          throw Error('error: actual FIREBASE_JSON value not found')
+        }
+        break;
+      default:
+        console.log('unknown arg;', arg)
+    }
+  })
 }
 
 runner()

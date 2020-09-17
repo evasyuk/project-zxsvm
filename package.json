@@ -8,6 +8,7 @@
     "test": "ava",
     "start": "webpack-dev-server --config cfg/webpack.config.js --open --mode development --history-api-fallback",
     "build": "webpack --config cfg/webpack.config.js --mode production",
+    "use_secrets": "FIREBASE_JSON=$FIREBASE_JSON node scripts/helperVar.js FIREBASE_JSON",
     "lint": "eslint ./ --ignore-path .gitignore",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write \"{,!(node_modules)/**/}*.js\""
