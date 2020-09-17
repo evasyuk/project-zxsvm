@@ -3,3 +3,10 @@ dist
 node_modules
 
 /scripts/demoFileEncoded.txt
+
+/.firebase/
+/.firebaserc
+/firebase.json
+
+/public/i.js
+/public/index.html
