@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
+    "deploy": "./scripts/deploy.firebase.sh",
     "test": "ava",
     "start": "webpack-dev-server --config cfg/webpack.config.js --open --mode development --history-api-fallback",
     "build": "webpack --config cfg/webpack.config.js --mode production",
