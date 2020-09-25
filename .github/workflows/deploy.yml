@@ -17,8 +17,8 @@ jobs:
       - run: npm run test
       - run: npm run lint
       - run: npm run build
-      - run: echo test $FIREBASE_JSON
-      - run: npm run use_secrets
+      - run: echo test ${{ secrets.FIREBASE_JSON }}
+      - run: FIREBASE_JSON=${{ secrets.FIREBASE_JSON }} npm run use_secrets
       - env:
           FIREBASE_JSON: ${{ secrets.FIREBASE_JSON }}
-        run: npm run deploy
+      - run: npm run deploy
