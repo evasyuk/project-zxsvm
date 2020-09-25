@@ -28,15 +28,22 @@ function runner() {
   const inputArguments = process.argv.slice(2);
   console.log('helperVar input arguments: ', inputArguments);
 
+  const lookupValue = (value, outputFile) => {
+    if (process.env[value]) {
+      console.log(`success: actual ${value} value found`)
+      generateFileFromVar(process.env[value], outputFile)
+    } else {
+      throw Error(`error: actual ${value} value not found`)
+    }
+  }
+
   inputArguments.forEach((arg) => {
     switch (arg) {
       case 'FIREBASE_JSON':
-        if (process.env[arg]) {
-          console.log('success: actual FIREBASE_JSON value found')
-          generateFileFromVar(process.env[arg], __dirname + '/../firebase.json')
-        } else {
-          throw Error('error: actual FIREBASE_JSON value not found')
-        }
+        lookupValue(arg, __dirname + '/../firebase.json')
+        break;
+      case 'FIREBASE_RC':
+        lookupValue(arg, __dirname + '/../.firebaserc')
         break;
       default:
         console.log('unknown arg;', arg)
@@ -45,6 +52,10 @@ function runner() {
 }
 
 runner()
+
+// const [fileAsString, fileAsBase64] = generateVarFromFile(__dirname + '/../.firebaserc')
+// console.log('fileAsString', fileAsString)
+// console.log('fileAsBase64', fileAsBase64)
 
 exports.module = {
   generateVarFromFile,
