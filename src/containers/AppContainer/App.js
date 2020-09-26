@@ -1,15 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-// import { connect } from 'react-redux' // ToDo: move as independent
 
 import { clearStorage } from '../../helpers/storage'
-// import {
-//     getLocales,
-//     getAvailableLanguages,
-//     getTermsOfUse,
-//     changeModalState,
-// } from '../../state/actions'
-// import { getAppLanguage } from '../../state/selectors'
 
 import { AppCrashModal } from '../../components/modals'
 
@@ -23,13 +15,16 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // const { currentLanguage } = this.props
+    this.forceRestart = window.addEventListener('keydown', (event) => {
+      if (event.key === 'G' && event.shiftKey) {
+        clearStorage()
+        window.location.reload()
+      }
+    })
+  }
 
-    // this.props.getAvailableLanguages()
-    // this.props.getLocales(currentLanguage)
-    // this.props.getTermsOfUse(currentLanguage)
-
-    console.log('App did mount')
+  componentWillUnmount() {
+    window.removeEventListener(this.forceRestart)
   }
 
   componentDidCatch(error, info) {
@@ -53,16 +48,5 @@ class App extends Component {
     )
   }
 }
-
-// const mapStateToProps = state => ({
-//     currentLanguage: getAppLanguage(state),
-// })
-//
-// const mapDispatchToProps = {
-//     getLocales,
-//     getAvailableLanguages,
-//     getTermsOfUse,
-//     changeModalState,
-// }
 
 export default withRouter(App)
