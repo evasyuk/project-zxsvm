@@ -42,7 +42,7 @@ const defaultState = {
     bold: 500,
     bolder: 700,
   },
-  borderRadius: '20px',
+  borderRadius: '5px',
   companyLogo: '',
   companyName: '',
 }

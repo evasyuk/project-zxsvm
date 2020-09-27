@@ -1,84 +1,76 @@
 import React, { Component } from 'react'
 import propTypes from 'prop-types'
-import { injectIntl } from 'react-intl'
-import { Redirect, withRouter } from 'react-router-dom'
-import { connect } from 'react-redux'
 
-import { login } from '../../state/actions'
-import { getIsLoggedInStatus } from '../../state/selectors'
-
-import { ROUTES } from '../../constants/routes'
-
-import { Title, Text, Button } from '../../components'
+import { Text, Title, LinkButton } from '../../components'
 
 import { LoginForm } from '../../components/forms'
-import { MarginTopWrapper, ModalWindow } from '../../components/styles'
-
 import {
-  LeftSideWrapper,
-  RightSideWrapper,
-  RideSideContainer,
-  Wrapper,
-} from './styles'
+  MobileTopWrapper,
+  MobileWindow,
+  MobileMainContent,
+  MobileNoContent,
+  MobileMainSection,
+  ScreenWrapper,
+} from '../../components/styles'
+
+const noAccountBlock = (intl, onSignUp) => (
+  <MobileTopWrapper>
+    <Text>
+      {intl.formatMessage({
+        id: 'LOG_IN.NO_ACCOUNT',
+      })}
+    </Text>
+    <LinkButton
+      onClick={onSignUp}
+      title={intl.formatMessage({
+        id: 'LOG_IN.CREATE_NEW_ONE',
+      })}
+    />
+  </MobileTopWrapper>
+)
 
 class SignUp extends Component {
-  onLogin = () => {
-    this.props.login()
-    this.props.history.replace(ROUTES.HOME)
-  }
+  renderMobile = ({ intl, onLogin, onSignUp }) => (
+    <MobileWindow>
+      <MobileNoContent />
 
-  onSignUp = () => this.props.history.replace(ROUTES.SIGN_UP)
+      <MobileMainContent>
+        <MobileMainSection>
+          <MobileTopWrapper times={3}>
+            <Title
+              title={intl.formatMessage({
+                id: 'LOG_IN.TITLE',
+              })}
+            />
 
-  renderFull = () => (
-    <ModalWindow>
-      <LeftSideWrapper>
-        <MarginTopWrapper>
-          <Title title="Log in" />
-          <MarginTopWrapper>
-            <LoginForm intl={this.props.intl} onLogin={this.onLogin} />
-          </MarginTopWrapper>
-        </MarginTopWrapper>
-      </LeftSideWrapper>
-      <RightSideWrapper>
-        <RideSideContainer>
-          <Title title="New member?" />
-          <MarginTopWrapper>
-            <Text>Fill up personal info</Text>
-            <Text>and start your journey!</Text>
-          </MarginTopWrapper>
-          <MarginTopWrapper>
-            <Button title="Sign Up" onClick={this.onSignUp} />
-          </MarginTopWrapper>
-        </RideSideContainer>
-      </RightSideWrapper>
-    </ModalWindow>
+            <MobileTopWrapper>
+              <LoginForm intl={intl} onLogin={onLogin} />
+            </MobileTopWrapper>
+
+            {noAccountBlock(intl, onSignUp)}
+          </MobileTopWrapper>
+        </MobileMainSection>
+      </MobileMainContent>
+
+      <MobileNoContent />
+    </MobileWindow>
   )
 
   render() {
-    if (this.props.isLoggedIn) {
-      return <Redirect to={ROUTES.HOME} />
-    }
+    const { intl, onLogin, onSignUp } = this.props
 
-    return <Wrapper>{this.renderFull()}</Wrapper>
+    return (
+      <ScreenWrapper>
+        {this.renderMobile({ intl, onLogin, onSignUp })}
+      </ScreenWrapper>
+    )
   }
 }
 
 SignUp.propTypes = {
   intl: propTypes.object.isRequired,
-  history: propTypes.object.isRequired,
-  login: propTypes.func.isRequired,
-  isLoggedIn: propTypes.bool.isRequired,
+  onLogin: propTypes.func.isRequired,
+  onSignUp: propTypes.func.isRequired,
 }
 
-const mapStateToProps = (state) => ({
-  isLoggedIn: getIsLoggedInStatus(state),
-})
-
-const mapDispatchToProps = {
-  login,
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(withRouter(injectIntl(SignUp)))
+export default SignUp

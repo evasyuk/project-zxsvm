@@ -5,8 +5,8 @@ export const ButtonWrapper = styled.button`
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-width: 94px;
-  border-radius: ${(props) => `${props.theme.borderRadius}px`};
+  min-width: 100px;
+  border-radius: ${(props) => `${props.theme.borderRadius}`};
   cursor: pointer;
   outline: 0;
   border: none;

@@ -6,7 +6,7 @@ import { LoginSchema } from '../../helpers/validationSchemas'
 
 import { Button, Input } from '../index'
 
-import { MarginTopWrapper } from '../styles'
+import { MobileTopWrapper } from '../styles'
 
 const LoginForm = ({ intl, onLogin }) => (
   <Formik
@@ -36,7 +36,7 @@ const LoginForm = ({ intl, onLogin }) => (
           onBlur={handleBlur}
           placeholder={intl.formatMessage({ id: 'LOG_IN.PASSWORD_INPUT' })}
         />
-        <MarginTopWrapper>
+        <MobileTopWrapper>
           <Button
             type="submit"
             disabled={!values.password || !values.email}
@@ -44,7 +44,7 @@ const LoginForm = ({ intl, onLogin }) => (
             width="152px"
             id="loginButton"
           />
-        </MarginTopWrapper>
+        </MobileTopWrapper>
       </form>
     )}
   </Formik>

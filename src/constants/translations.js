@@ -4,12 +4,17 @@ const translations = {
   LOG_IN: {
     EMAIL_INPUT: 'E-mail',
     PASSWORD_INPUT: 'Password',
+    TITLE: 'Log in',
     BUTTON: 'Log in',
     SIGN_UP_LINK: 'Sign up here!',
     SIGN_UP_LINK_MOBILE: 'Sign up',
+    NO_ACCOUNT: 'No account?',
+    CREATE_NEW_ONE: 'Create new',
   },
   SIGN_UP: {
     TITLE: 'Sign up',
+    ALREADY_REGISTERED: 'Already registered?',
+    BACK_TO_LOGIN: 'Back to login',
     FIRST_NAME_INPUT: 'First name',
     LAST_NAME_INPUT: 'Last name',
     EMAIL_INPUT: 'E-mail',

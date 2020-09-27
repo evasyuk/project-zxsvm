@@ -6,15 +6,9 @@ import { SignUpSchema } from '../../helpers/validationSchemas'
 
 import { Button, Input, Checkbox, LinkButton } from '../index'
 
-import {
-  ButtonsWrap,
-  BtnContainer,
-  AgreementWrap,
-  AgreementInner,
-} from './styles'
-// import { MarginTopWrapper } from '../styles'
+import { ButtonsWrap, AgreementWrap, AgreementInner } from './styles'
 
-const SignUpForm = ({ intl, onSignUp, onClose, onDataProtection }) => (
+const SignUpForm = ({ intl, onSignUp, onDataProtection }) => (
   <Formik
     initialValues={{
       sign_up_name: '',
@@ -141,23 +135,15 @@ const SignUpForm = ({ intl, onSignUp, onClose, onDataProtection }) => (
         </AgreementWrap>
         <ButtonsWrap>
           <Button
-            onClick={onClose}
+            type="submit"
+            disabled={
+              Object.values(values).some((e) => e === '') ||
+              !values.sign_up_agreed
+            }
             title={intl.formatMessage({
-              id: 'SIGN_UP.CANCEL_BUTTON',
+              id: 'SIGN_UP.SIGN_UP_BUTTON',
             })}
           />
-          <BtnContainer>
-            <Button
-              type="submit"
-              disabled={
-                Object.values(values).some((e) => e === '') ||
-                !values.sign_up_agreed
-              }
-              title={intl.formatMessage({
-                id: 'SIGN_UP.SIGN_UP_BUTTON',
-              })}
-            />
-          </BtnContainer>
         </ButtonsWrap>
       </form>
     )}
@@ -168,13 +154,6 @@ SignUpForm.propTypes = {
   intl: propTypes.object.isRequired,
   onSignUp: propTypes.func.isRequired,
   onDataProtection: propTypes.func.isRequired,
-  onClose: propTypes.func,
-}
-
-SignUpForm.defaultProps = {
-  onClose: () => {
-    console.log('SignUpForm onClose')
-  },
 }
 
 export default SignUpForm
