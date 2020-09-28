@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
+const dotEnvPlugin = require('./webpackDotenvPlugin')
 
 module.exports = {
   module: {
@@ -50,6 +51,7 @@ module.exports = {
     ],
   },
   plugins: [
+    dotEnvPlugin(),
     new HtmlWebPackPlugin({
       title: 'zxsvm',
       template: 'cfg/index.hbs',

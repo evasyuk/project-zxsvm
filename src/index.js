@@ -36,6 +36,8 @@ const GlobalStyles = createGlobalStyle`
   }
 `
 
+console.log('API_URL', process.env.API_URL)
+
 render(
   <Provider store={store}>
     <ThemeProvider>

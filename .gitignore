@@ -10,3 +10,5 @@ node_modules
 
 /public/i.js
 /public/index.html
+
+.env
