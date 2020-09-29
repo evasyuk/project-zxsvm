@@ -7,11 +7,17 @@ export const getThemeStyles = createSelector(
   (theme) => theme,
 )
 
-export const getNotificationMessage = () => {}
+export const getNotificationsQueue = createSelector(
+  (state) => state.notifications,
+  (notifications) => notifications.messageQueue,
+)
 
 export const getLoadingStatus = createSelector(
-  (state) => state.loading,
-  (status) => status.is_loading,
+  (state) => ({
+    loading: state.loading,
+    auth: state.auth,
+  }),
+  ({ loading, auth }) => loading.is_loading || auth.loginInProgress,
 )
 
 export const getFlatTranslations = createSelector(

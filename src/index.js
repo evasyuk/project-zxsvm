@@ -7,8 +7,8 @@ import { createGlobalStyle } from 'styled-components'
 import {
   IntlProvider,
   ThemeProvider,
-  // NotificationProvider,
-  // Notification,
+  SnackbarProvider,
+  NotificationPortal,
 } from './components'
 
 import { LoadingOverlay } from './components/controlled'
@@ -36,25 +36,23 @@ const GlobalStyles = createGlobalStyle`
   }
 `
 
-console.log('API_URL', process.env.API_URL)
-
 render(
   <Provider store={store}>
     <ThemeProvider>
       <IntlProvider>
-        <>
-          <GlobalStyles />
-          <Router>
-            {/* <NotificationProvider maxSnack={3}> */}
-            <>
-              <ModalFactory />
-              <App />
-              {/* <Notification /> */}
-              <LoadingOverlay />
-            </>
-            {/* </NotificationProvider> */}
-          </Router>
-        </>
+        <SnackbarProvider>
+          <>
+            <GlobalStyles />
+            <Router>
+              <>
+                <LoadingOverlay />
+                <ModalFactory />
+                <App />
+                <NotificationPortal />
+              </>
+            </Router>
+          </>
+        </SnackbarProvider>
       </IntlProvider>
     </ThemeProvider>
   </Provider>,

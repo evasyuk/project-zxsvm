@@ -2,7 +2,7 @@
 import axios from 'axios'
 // import { setMissingAuth } from '../state/actions'
 
-import { API_URI, TOKEN } from '../constants'
+import { API_URL, TOKEN } from '../constants'
 
 import { getItemAsync, removeItemAsync, setItemAsync } from '../helpers/storage'
 
@@ -14,15 +14,17 @@ class ApiClient {
       this.token = res || null
     })
     this.client = axios.create({
-      baseURL: API_URI,
+      baseURL: API_URL,
       withCredentials: true,
     })
 
     this.client.interceptors.response.use(
       (response) => response,
       (error) => {
-        console.log('unauthorized, need to login in again')
-        if (!error.response.request.responseURL.endsWith('login')) {
+        if (
+          error?.response?.request?.responseURL &&
+          !error.response.request.responseURL.endsWith('login')
+        ) {
           // store.dispatch(setMissingAuth())
           console.log('axios response error', 'login')
         }

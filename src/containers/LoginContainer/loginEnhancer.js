@@ -26,9 +26,8 @@ function enhancer(ComposedComponent) {
       isLoggedIn: propTypes.bool.isRequired,
     }
 
-    onLogin = () => {
-      this.props.login()
-      this.props.history.replace(ROUTES.HOME)
+    onLogin = (email, password) => {
+      this.props.login(email, password)
     }
 
     onSignUp = () => this.props.history.replace(ROUTES.SIGN_UP)

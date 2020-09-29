@@ -5,6 +5,8 @@ export default function apiMiddleware(api) {
     }
 
     const { promise, types, ...rest } = action
+    //
+    // console.log('apiMiddleware action', action)
 
     if (!promise) return next(action)
 
@@ -14,7 +16,8 @@ export default function apiMiddleware(api) {
 
     return promise(api).then(
       (data) => next({ ...rest, data, type: SUCCESS }),
-      (error) =>
+      // eslint-disable-next-line prettier/prettier
+      (error) => // TODO: improve
         next({
           ...rest,
           error:

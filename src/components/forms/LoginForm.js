@@ -10,7 +10,7 @@ import { MobileTopWrapper } from '../styles'
 
 const LoginForm = ({ intl, onLogin }) => (
   <Formik
-    initialValues={{ email: '', password: '' }}
+    initialValues={{ email: '5@5.com', password: '112312356' }}
     validationSchema={LoginSchema({ intl })}
     onSubmit={(values) => onLogin(values.email, values.password)}
   >
