@@ -35,7 +35,7 @@ const getMessage = (intl, item) => {
 }
 
 function enhancer(ComposedComponent) {
-  class WrapperLoginContainer extends Component {
+  class SnackbarEnhancer extends Component {
     static propTypes = {
       intl: propTypes.object.isRequired,
       clearAllNotifications: propTypes.func.isRequired,
@@ -72,11 +72,7 @@ function enhancer(ComposedComponent) {
   return connect(
     mapStateToProps,
     mapDispatchToProps,
-  )(
-    injectIntl(
-      withSnackbar(hoistStatics(WrapperLoginContainer, ComposedComponent)),
-    ),
-  )
+  )(injectIntl(withSnackbar(hoistStatics(SnackbarEnhancer, ComposedComponent))))
 }
 
 export default enhancer

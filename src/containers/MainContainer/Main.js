@@ -1,36 +1,28 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
+import { func } from 'prop-types'
 
 import { Header2 } from '../../components'
 
-const TopContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  width: 100wv;
-  height: 100%;
-`
-
-const MainContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  width: 100%;
-  height: 100%;
-`
+import { TopContainer, MainContainer } from './styles'
 
 class Main extends Component {
   render() {
+    const { onLogout } = this.props
+
     return (
       <TopContainer>
         <Header2
           onProfile={() => console.log('onProfile')}
-          onLogout={() => console.log('onLogout')}
+          onLogout={onLogout}
         />
         <MainContainer>Main</MainContainer>
       </TopContainer>
     )
   }
+}
+
+Main.propTypes = {
+  onLogout: func.isRequired,
 }
 
 export default Main

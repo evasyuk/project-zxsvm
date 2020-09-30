@@ -14,6 +14,8 @@ export const TYPES_AUTH = {
   LOGIN: LOGIN_TYPES,
 }
 
+export const LOGOUT_TYPE = 'logout'
+
 const defaultState = {
   missingAuth: false,
   isLoggedIn: false,
@@ -28,6 +30,10 @@ const defaultState = {
 export const setMissingAuth = () => ({
   type: TYPES_AUTH.MISSING_AUTH,
   update: { missingAuth: true },
+})
+
+export const logout = () => ({
+  type: LOGOUT_TYPE,
 })
 
 export const login = (email, password) => ({
@@ -63,6 +69,8 @@ export const reducerAuth = (state = defaultState, action) => {
         ...state,
         loginInProgress: true,
       }
+    case LOGOUT_TYPE:
+      return defaultState
     default:
       return state
   }
