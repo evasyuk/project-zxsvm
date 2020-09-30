@@ -4,12 +4,7 @@ import { Provider } from 'react-redux'
 
 import { createGlobalStyle } from 'styled-components'
 
-import {
-  IntlProvider,
-  ThemeProvider,
-  SnackbarProvider,
-  NotificationPortal,
-} from './components'
+import { IntlProvider, ThemeProvider, SnackbarProvider } from './components'
 
 import { LoadingOverlay } from './components/controlled'
 import { ModalFactory } from './components/modals'

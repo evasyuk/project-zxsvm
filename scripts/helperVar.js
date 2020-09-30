@@ -7,17 +7,12 @@ const generateVarFromFile = function (filePath = __dirname + '/demoFileOriginal.
   let buff = Buffer.from(fileAsString);
   let fileAsBase64 = buff.toString('base64');
 
-  // console.log('fileAsString', fileAsString)
-  // console.log('fileAsBase64', fileAsBase64)
-
   return [fileAsString, fileAsBase64]
 }
 
 const generateFileFromVar = function (base64var, outFilePath = __dirname + '/demoFileEncoded.txt') {
   let buff2 = Buffer.from(base64var, 'base64');
   let fileAsString = buff2.toString('utf-8');
-
-  // console.log('encoded', fileAsString)
 
   fs.writeFileSync(outFilePath, fileAsString);
 
@@ -45,6 +40,9 @@ function runner() {
       case 'FIREBASE_RC':
         lookupValue(arg, __dirname + '/../.firebaserc')
         break;
+      case 'DOTENV':
+        lookupValue(arg, __dirname + '/../.env')
+        break;
       default:
         console.log('unknown arg;', arg)
     }
@@ -53,9 +51,11 @@ function runner() {
 
 runner()
 
-// const [fileAsString, fileAsBase64] = generateVarFromFile(__dirname + '/../.firebaserc')
-// console.log('fileAsString', fileAsString)
-// console.log('fileAsBase64', fileAsBase64)
+// const itemsToGenerate = ['firebase.json', '.firebaserc', '.env']
+// itemsToGenerate.forEach((item) => {
+//   const [fileAsString, fileAsBase64] = generateVarFromFile(__dirname + `/../${item}`)
+//   console.log(item, fileAsString, fileAsBase64)
+// })
 
 exports.module = {
   generateVarFromFile,
