@@ -12,14 +12,14 @@ const SignUpForm = ({ intl, onSignUp, onDataProtection }) => (
   <Formik
     initialValues={{
       sign_up_name: '',
-      sign_up_last_name: '',
       sign_up_email: '',
       sign_up_password: '',
       sign_up_confirm_password: '',
+      sign_up_phone: '',
       sign_up_agreed: false,
     }}
     validationSchema={SignUpSchema({ intl })}
-    onSubmit={(values) => onSignUp(values)}
+    onSubmit={onSignUp}
   >
     {({ values, errors, handleSubmit, handleChange, handleBlur, touched }) => (
       <form onSubmit={handleSubmit} data-selector="sign_up-form">
@@ -27,7 +27,7 @@ const SignUpForm = ({ intl, onSignUp, onDataProtection }) => (
           id="sign_up_name"
           value={values.sign_up_name}
           label={intl.formatMessage({
-            id: 'SIGN_UP.FIRST_NAME_INPUT',
+            id: 'SIGN_UP.NAME_INPUT',
           })}
           onChange={handleChange}
           onBlur={handleBlur}
@@ -37,24 +37,7 @@ const SignUpForm = ({ intl, onSignUp, onDataProtection }) => (
               : ''
           }
           placeholder={intl.formatMessage({
-            id: 'SIGN_UP.FIRST_NAME_INPUT',
-          })}
-        />
-        <Input
-          id="sign_up_last_name"
-          value={values.sign_up_last_name}
-          label={intl.formatMessage({
-            id: 'SIGN_UP.LAST_NAME_INPUT',
-          })}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          error={
-            errors.sign_up_last_name && touched.sign_up_last_name
-              ? errors.sign_up_last_name
-              : ''
-          }
-          placeholder={intl.formatMessage({
-            id: 'SIGN_UP.LAST_NAME_INPUT',
+            id: 'SIGN_UP.NAME_INPUT',
           })}
         />
         <Input
@@ -72,6 +55,23 @@ const SignUpForm = ({ intl, onSignUp, onDataProtection }) => (
           }
           placeholder={intl.formatMessage({
             id: 'SIGN_UP.EMAIL_INPUT',
+          })}
+        />
+        <Input
+          id="sign_up_phone"
+          value={values.sign_up_phone}
+          label={intl.formatMessage({
+            id: 'SIGN_UP.PHONE_NUMBER',
+          })}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={
+            errors.sign_up_phone && touched.sign_up_phone
+              ? errors.sign_up_phone
+              : ''
+          }
+          placeholder={intl.formatMessage({
+            id: 'SIGN_UP.PHONE_INPUT',
           })}
         />
         <Input

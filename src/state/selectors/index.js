@@ -17,7 +17,7 @@ export const getLoadingStatus = createSelector(
     loading: state.loading,
     auth: state.auth,
   }),
-  ({ loading, auth }) => loading.is_loading || auth.loginInProgress,
+  ({ loading, auth }) => loading.is_loading || auth.requestInProgress,
 )
 
 export const getFlatTranslations = createSelector(

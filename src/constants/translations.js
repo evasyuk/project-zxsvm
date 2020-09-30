@@ -4,6 +4,8 @@ const translations = {
   ERROR: {
     AUTH: {
       NOT_FOUND: 'No such user in the system',
+      VALIDATION_ERROR: 'Invalid user data',
+      EMAIL_ALREADY_IN_USE: 'Email(or phone) already in use',
     },
   },
   LOG_IN: {
@@ -20,15 +22,16 @@ const translations = {
     TITLE: 'Sign up',
     ALREADY_REGISTERED: 'Already registered?',
     BACK_TO_LOGIN: 'Back to login',
-    FIRST_NAME_INPUT: 'First name',
-    LAST_NAME_INPUT: 'Last name',
+    NAME_INPUT: 'User name',
+    PHONE_NUMBER: 'Phone number',
+    PHONE_INPUT: '+380731234567',
     EMAIL_INPUT: 'E-mail',
     PASSWORD_INPUT: 'Password',
     REPEAT_PASSWORD_INPUT: 'Repeat password',
     SIGN_UP_BUTTON: 'Sign up',
     CANCEL_BUTTON: 'Cancel',
     TERMS_AND_AGREEMENT_LABEL: 'I agree with the',
-    TERMS_AND_AGREEMENT_LINK: 'data protection regulations',
+    TERMS_AND_AGREEMENT_LINK: 'privacy policy',
   },
   VALIDATION_ERRORS: {
     EMAIL_REQUIRED: 'Email is required',
@@ -40,18 +43,13 @@ const translations = {
     NEW_PASSWORD_REQUIRED: 'New password is required',
     PASSWORD_MIN_LENGTH:
       'Password should contain at least {count} characters, uppercase and lowercase, a number and special character',
-    FIRST_NAME_MIN_LENGTH: 'First name should be at least {count} characters',
-    FIRST_NAME_MAX_LENGTH:
-      'First name should not be more then {count} characters',
-    FIRST_NAME_ONLY_ALPHABET:
-      'First name should contain only alphabet characters',
-    FIRST_NAME_REQUIRED: 'First name is required',
-    LAST_NAME_MIN_LENGTH: 'Last name should be at least {count} characters',
-    LAST_NAME_MAX_LENGTH:
-      'Last name should not be more then {count} characters',
-    LAST_NAME_ONLY_ALPHABET:
-      'Last name should contain only alphabet characters',
+    NAME_MIN_LENGTH: 'First name should be at least {count} characters',
+    NAME_MAX_LENGTH: 'First name should not be more then {count} characters',
+    NAME_ONLY_ALPHABET: 'First name should contain only alphabet characters',
+    NAME_REQUIRED: 'First name is required',
     LAST_NAME_REQUIRED: 'Last name is required',
+    PHONE_NUMBER_INVALID: 'Invalid phone number',
+    PHONE_NUMBER_REQUIRED: 'Phone number is required',
   },
   HEADER: {
     PROFILE: 'Profile',

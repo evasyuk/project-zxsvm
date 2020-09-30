@@ -8,10 +8,17 @@ const LOGIN_TYPES = {
   FAILURE: 'login_failure',
 }
 
+const SIGNUP_TYPES = {
+  REQUEST: 'sign_up_started',
+  SUCCESS: 'sign_up_success',
+  FAILURE: 'sign_up_failure',
+}
+
 export const TYPES_AUTH = {
   MISSING_AUTH: 'missingAuth',
 
   LOGIN: LOGIN_TYPES,
+  SIGNUP: SIGNUP_TYPES,
 }
 
 export const LOGOUT_TYPE = 'logout'
@@ -20,8 +27,7 @@ const defaultState = {
   missingAuth: false,
   isLoggedIn: false,
 
-  loginInProgress: false,
-  loginErrorMessage: null,
+  requestInProgress: false,
 
   token: null,
   userRecord: null,
@@ -41,16 +47,25 @@ export const login = (email, password) => ({
   promise: (api) => api.auth.login({ email, password }),
 })
 
+export const register = ({ name, email, password, phone }) => ({
+  types: getApiTypes(SIGNUP_TYPES),
+  promise: (api) => api.auth.register({ name, email, password, phone }),
+})
+
 export const reducerAuth = (state = defaultState, action) => {
   switch (action.type) {
+    case TYPES_AUTH.SIGNUP.FAILURE:
     case TYPES_AUTH.LOGIN.FAILURE:
+      if (action.fields) {
+        console.log('absent fields', action.fields)
+      }
       action.asyncDispatch(showErrorNotification(`ERROR.${action.error}`))
 
       return {
         ...state,
-        loginInProgress: false,
-        loginErrorMessage: action?.update?.error || 'unexpected login error',
+        requestInProgress: false,
       }
+    case TYPES_AUTH.SIGNUP.SUCCESS:
     case TYPES_AUTH.LOGIN.SUCCESS:
       // eslint-disable-next-line no-case-declarations
       const { token, userRecord } = action.data
@@ -59,15 +74,16 @@ export const reducerAuth = (state = defaultState, action) => {
         ...state,
         missingAuth: false,
         isLoggedIn: true,
-        loginInProgress: false,
+        requestInProgress: false,
 
         token,
         userRecord,
       }
+    case TYPES_AUTH.SIGNUP.REQUEST:
     case TYPES_AUTH.LOGIN.REQUEST:
       return {
         ...state,
-        loginInProgress: true,
+        requestInProgress: true,
       }
     case LOGOUT_TYPE:
       return defaultState

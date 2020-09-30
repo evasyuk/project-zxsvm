@@ -3,6 +3,7 @@ import * as Yup from 'yup'
 
 const ALPHABET = /[a-zA-Z]+$/
 const EMAIL = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+const PHONE = /^\+(?:[0-9]?){6,14}[0-9]$/ // Regular expression matching E.164 formatted phone numbers
 
 // TODO: intl error message
 export const LoginSchema = ({ intl }) =>
@@ -20,44 +21,34 @@ export const SignUpSchema = ({ intl }) =>
     sign_up_name: Yup.string()
       .min(2, ({ min }) =>
         intl.formatMessage(
-          { id: 'VALIDATION_ERRORS.FIRST_NAME_MIN_LENGTH' },
+          { id: 'VALIDATION_ERRORS.NAME_MIN_LENGTH' },
           { count: min },
         ),
       )
       .max(50, ({ max }) =>
         intl.formatMessage(
-          { id: 'VALIDATION_ERRORS.FIRST_NAME_MAX_LENGTH' },
+          { id: 'VALIDATION_ERRORS.NAME_MAX_LENGTH' },
           { count: max },
         ),
       )
       .matches(
         ALPHABET,
         intl.formatMessage({
-          id: 'VALIDATION_ERRORS.FIRST_NAME_ONLY_ALPHABET',
+          id: 'VALIDATION_ERRORS.NAME_ONLY_ALPHABET',
+        }),
+      )
+      .required(intl.formatMessage({ id: 'VALIDATION_ERRORS.NAME_REQUIRED' })),
+    sign_up_phone: Yup.string()
+      .matches(
+        PHONE,
+        intl.formatMessage({
+          id: 'VALIDATION_ERRORS.PHONE_NUMBER_INVALID',
         }),
       )
       .required(
-        intl.formatMessage({ id: 'VALIDATION_ERRORS.FIRST_NAME_REQUIRED' }),
-      ),
-    sign_up_last_name: Yup.string()
-      .min(2, ({ min }) =>
-        intl.formatMessage(
-          { id: 'VALIDATION_ERRORS.LAST_NAME_MIN_LENGTH' },
-          { count: min },
-        ),
-      )
-      .max(50, ({ max }) =>
-        intl.formatMessage(
-          { id: 'VALIDATION_ERRORS.LAST_NAME_MAX_LENGTH' },
-          { count: max },
-        ),
-      )
-      .matches(
-        ALPHABET,
-        intl.formatMessage({ id: 'VALIDATION_ERRORS.LAST_NAME_ONLY_ALPHABET' }),
-      )
-      .required(
-        intl.formatMessage({ id: 'VALIDATION_ERRORS.LAST_NAME_REQUIRED' }),
+        intl.formatMessage({
+          id: 'VALIDATION_ERRORS.PHONE_NUMBER_REQUIRED',
+        }),
       ),
     sign_up_email: Yup.string()
       .matches(

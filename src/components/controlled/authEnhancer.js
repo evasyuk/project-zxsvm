@@ -21,16 +21,17 @@ function enhancer(ComposedComponent, redirectToHome = false) {
       isLoggedIn: propTypes.bool.isRequired,
     }
 
+    // TODO: first implementation failed
     render() {
-      if (redirectToHome && this.props.isLoggedIn) {
-        // login and auth screen
-        return <Redirect to={ROUTES.HOME} />
-      }
-
-      if (!redirectToHome && !this.props.isLoggedIn) {
-        // main screen
-        return <Redirect to={ROUTES.LOGIN} />
-      }
+      // if (redirectToHome && this.props.isLoggedIn) {
+      //   // login and auth screen
+      //   return <Redirect to={ROUTES.HOME} />
+      // }
+      //
+      // if (!redirectToHome && !this.props.isLoggedIn) {
+      //   // main screen
+      //   return <Redirect to={ROUTES.LOGIN} />
+      // }
 
       return <ComposedComponent {...this.props} />
     }

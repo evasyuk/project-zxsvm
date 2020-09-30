@@ -17,13 +17,12 @@ export default function apiMiddleware(api) {
     return promise(api).then(
       (data) => next({ ...rest, data, type: SUCCESS }),
       // eslint-disable-next-line prettier/prettier
-      (error) => // TODO: improve
-        next({
+      (error) => next({
           ...rest,
-          error:
-            error.response && error.response.data
-              ? error.response.data.message
-              : error.message,
+          error: error?.response?.data
+            ? error.response.data.message
+            : error.message,
+          fields: error?.response?.data?.fields,
           type: FAILURE,
         }),
     )
