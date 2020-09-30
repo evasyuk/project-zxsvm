@@ -38,8 +38,7 @@ export const login = (email, password) => ({
 export const reducerAuth = (state = defaultState, action) => {
   switch (action.type) {
     case TYPES_AUTH.LOGIN.FAILURE:
-      // translate code : action.error
-      action.asyncDispatch(showErrorNotification('Wow! network error'))
+      action.asyncDispatch(showErrorNotification(`ERROR.${action.error}`))
 
       return {
         ...state,

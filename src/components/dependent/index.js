@@ -1,5 +1,5 @@
 import { SnackbarProvider } from 'notistack'
 import Icon from './Icon'
-import NotificationPortal from './NotificationPortal'
+import snackbarEnhancer from './snackbarEnhancer'
 
-export { NotificationPortal, Icon, SnackbarProvider }
+export { snackbarEnhancer, Icon, SnackbarProvider }

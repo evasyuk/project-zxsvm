@@ -48,7 +48,6 @@ render(
                 <LoadingOverlay />
                 <ModalFactory />
                 <App />
-                <NotificationPortal />
               </>
             </Router>
           </>

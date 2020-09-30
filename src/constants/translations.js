@@ -1,6 +1,11 @@
 const translations = {
   lang_label: 'English',
   lang_key: 'en',
+  ERROR: {
+    AUTH: {
+      NOT_FOUND: 'No such user in the system',
+    },
+  },
   LOG_IN: {
     EMAIL_INPUT: 'E-mail',
     PASSWORD_INPUT: 'Password',
