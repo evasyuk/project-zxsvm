@@ -1,4 +1,4 @@
-import { SnackbarProvider } from 'notistack'
+import { SnackbarProvider } from 'notistack-v5'
 import Icon from './Icon'
 import snackbarEnhancer from './snackbarEnhancer'
 

@@ -6,7 +6,7 @@ import propTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { injectIntl } from 'react-intl'
 
-import { withSnackbar } from 'notistack'
+import { withSnackbar } from 'notistack-v5'
 import { clearAllNotifications as mClearNotifications } from '../../state/actions'
 import { getNotificationsQueue } from '../../state/selectors'
 
