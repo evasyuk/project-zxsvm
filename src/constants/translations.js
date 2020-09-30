@@ -7,6 +7,7 @@ const translations = {
       VALIDATION_ERROR: 'Invalid user data',
       EMAIL_ALREADY_IN_USE: 'Email(or phone) already in use',
     },
+    'Network Error': 'Server is unavailable at this moment',
   },
   LOG_IN: {
     EMAIL_INPUT: 'E-mail',
