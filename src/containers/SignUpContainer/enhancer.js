@@ -3,18 +3,15 @@ import React, { Component } from 'react'
 import hoistStatics from 'hoist-non-react-statics'
 import propTypes from 'prop-types'
 
-import { Redirect, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { injectIntl } from 'react-intl'
 
 import { RoutePaths } from '../../constants/routePaths'
-import { getIsLoggedInStatus } from '../../state/selectors'
 import { register } from '../../state/pieces/auth'
 import { getFullURL } from '../../helpers/getFullURL'
 
-const mapStateToProps = (state) => ({
-  isLoggedIn: getIsLoggedInStatus(state),
-})
+const mapStateToProps = () => null
 
 const mapDispatchToProps = {
   register,
@@ -26,7 +23,6 @@ function enhancer(ComposedComponent) {
       intl: propTypes.object.isRequired,
       location: propTypes.object.isRequired,
       history: propTypes.object.isRequired,
-      isLoggedIn: propTypes.bool.isRequired,
       register: propTypes.func.isRequired,
     }
 
@@ -51,10 +47,6 @@ function enhancer(ComposedComponent) {
       })
 
     render() {
-      if (this.props.isLoggedIn) {
-        return <Redirect to={RoutePaths.HOME} />
-      }
-
       return (
         <ComposedComponent
           {...this.props}

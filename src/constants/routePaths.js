@@ -1,11 +1,14 @@
 export const RoutePaths = {
+  // top-level routes
+  LANDING: '/',
   LOGIN: '/login',
   SIGN_UP: '/sign_up',
+  RESTORE: '/restore',
   PRIVACY: '/privacy',
   DATA_PROTECTION: '/data_protection',
-  SETTINGS: '/settings',
+  MAIN: '/',
+
+  // inner (main) routes
   PROFILE: '/profile',
-  RESTORE: '/restore',
-  HOME: '/home',
-  LANDING: '/',
+  SETTINGS: '/settings',
 }

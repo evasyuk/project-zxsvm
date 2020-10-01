@@ -54,6 +54,7 @@ const translations = {
   },
   HEADER: {
     PROFILE: 'Profile',
+    SETTINGS: 'Settings',
     LOG_OUT: 'Log out',
   },
 }

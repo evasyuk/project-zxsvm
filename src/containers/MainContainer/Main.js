@@ -1,21 +1,24 @@
 import React, { Component } from 'react'
 import { func } from 'prop-types'
+import { Switch } from 'react-router-dom'
 
+import { TopContainer } from './styles'
 import { Header2 } from '../../components'
 
-import { TopContainer, MainContainer } from './styles'
+import { MAIN_LEVEL_ROUTES } from '../../constants/routes'
 
 class Main extends Component {
   render() {
-    const { onLogout } = this.props
+    const { onLogout, onProfile, onSettings } = this.props
 
     return (
       <TopContainer>
         <Header2
-          onProfile={() => console.log('onProfile')}
+          onProfile={onProfile}
           onLogout={onLogout}
+          onSettings={onSettings}
         />
-        <MainContainer>Main</MainContainer>
+        <Switch>{MAIN_LEVEL_ROUTES}</Switch>
       </TopContainer>
     )
   }
@@ -23,6 +26,8 @@ class Main extends Component {
 
 Main.propTypes = {
   onLogout: func.isRequired,
+  onProfile: func.isRequired,
+  onSettings: func.isRequired,
 }
 
 export default Main

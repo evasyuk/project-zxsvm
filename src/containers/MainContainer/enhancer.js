@@ -8,6 +8,7 @@ import { injectIntl } from 'react-intl'
 
 import { getIsLoggedInStatus } from '../../state/selectors'
 import { logout } from '../../state/pieces/auth'
+import { RoutePaths } from '../../constants/routePaths'
 
 const mapStateToProps = (state) => ({
   isLoggedIn: getIsLoggedInStatus(state),
@@ -25,9 +26,18 @@ function enhancer(ComposedComponent) {
       onLogout: propTypes.func.isRequired,
     }
 
+    onProfile = () => this.props.history.push(RoutePaths.PROFILE)
+
+    onSettings = () => this.props.history.push(RoutePaths.SETTINGS)
+
     render() {
       return (
-        <ComposedComponent {...this.props} onLogout={this.props.onLogout} />
+        <ComposedComponent
+          {...this.props}
+          onLogout={this.props.onLogout}
+          onProfile={this.onProfile}
+          onSettings={this.onSettings}
+        />
       )
     }
   }

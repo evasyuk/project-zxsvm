@@ -37,7 +37,7 @@ const useStyles = (theme) =>
     },
   }))
 
-const Header2 = ({ intl, theme, onProfile, onLogout }) => {
+const Header2 = ({ intl, theme, onProfile, onLogout, onSettings }) => {
   const classes = useStyles(theme)(theme)
   const [drawer, setDrawer] = React.useState(false)
   const [anchorEl, setAnchorEl] = React.useState(null)
@@ -61,6 +61,11 @@ const Header2 = ({ intl, theme, onProfile, onLogout }) => {
   const handleLogout = () => {
     handleMenuClose()
     onLogout()
+  }
+
+  const handleSettings = () => {
+    handleMenuClose()
+    onSettings()
   }
 
   return (
@@ -113,6 +118,9 @@ const Header2 = ({ intl, theme, onProfile, onLogout }) => {
               <MenuItem onClick={handleProfile}>
                 {intl.formatMessage({ id: 'HEADER.PROFILE' })}
               </MenuItem>
+              <MenuItem onClick={handleSettings}>
+                {intl.formatMessage({ id: 'HEADER.SETTINGS' })}
+              </MenuItem>
               <MenuItem onClick={handleLogout}>
                 {intl.formatMessage({ id: 'HEADER.LOG_OUT' })}
               </MenuItem>
@@ -129,6 +137,7 @@ Header2.propTypes = {
   theme: propTypes.object,
   onProfile: propTypes.func.isRequired,
   onLogout: propTypes.func.isRequired,
+  onSettings: propTypes.func.isRequired,
 }
 
 Header2.defaultProps = {

@@ -8,7 +8,7 @@ import { RoutePaths } from '../../../constants/routePaths'
 
 const Splash = ({ isLoggedIn }) =>
   isLoggedIn ? (
-    <Redirect to={RoutePaths.HOME} />
+    <Redirect to={RoutePaths.PROFILE} />
   ) : (
     <Redirect to={RoutePaths.LOGIN} />
   )
