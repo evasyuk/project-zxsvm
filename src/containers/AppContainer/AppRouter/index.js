@@ -1,24 +1,8 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
 
-import {
-  MainContainer,
-  LoginPage,
-  RestorePasswordPage,
-  SignUpPage,
-  DataProtectionPage,
-} from '../..'
-import { Splash, ProtectedRoute } from '../../../components/controlled'
+import { Switch } from 'react-router-dom'
+import { SWITCH_ROUTES } from '../../../constants/routes'
 
-const AppRouter = () => (
-  <Switch>
-    <Route exact path="/" component={Splash} />
-    <Route path="/login" component={LoginPage} />
-    <Route path="/sign_up" component={SignUpPage} />
-    <Route path="/data_protection" component={DataProtectionPage} />
-    <Route path="/restore" component={RestorePasswordPage} />
-    <ProtectedRoute path="/home" component={MainContainer} />
-  </Switch>
-)
+const AppRouter = () => <Switch>{SWITCH_ROUTES}</Switch>
 
 export default AppRouter

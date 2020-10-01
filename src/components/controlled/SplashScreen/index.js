@@ -4,10 +4,14 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
 import { getIsLoggedInStatus } from '../../../state/selectors'
-import { ROUTES } from '../../../constants/routes'
+import { RoutePaths } from '../../../constants/routePaths'
 
 const Splash = ({ isLoggedIn }) =>
-  isLoggedIn ? <Redirect to={ROUTES.HOME} /> : <Redirect to={ROUTES.LOGIN} />
+  isLoggedIn ? (
+    <Redirect to={RoutePaths.HOME} />
+  ) : (
+    <Redirect to={RoutePaths.LOGIN} />
+  )
 
 Splash.propTypes = {
   isLoggedIn: propTypes.bool.isRequired,

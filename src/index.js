@@ -9,7 +9,7 @@ import { IntlProvider, ThemeProvider, SnackbarProvider } from './components'
 import { LoadingOverlay } from './components/controlled'
 import { ModalFactory } from './components/modals'
 
-import { Router } from './routes'
+import { Router } from './constants/routes'
 
 import { App } from './containers'
 

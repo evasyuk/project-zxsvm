@@ -1,11 +1,11 @@
-/* eslint-disable react/static-property-placement */
+/* eslint-disable */
 import React, { Component } from 'react'
 import hoistStatics from 'hoist-non-react-statics'
 import propTypes from 'prop-types'
 import { Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { ROUTES } from '../../constants/routes'
+import { RoutePaths } from '../../constants/routePaths'
 import { getIsLoggedInStatus } from '../../state/selectors'
 
 const mapStateToProps = (state) => ({
@@ -25,12 +25,12 @@ function enhancer(ComposedComponent, redirectToHome = false) {
     render() {
       // if (redirectToHome && this.props.isLoggedIn) {
       //   // login and auth screen
-      //   return <Redirect to={ROUTES.HOME} />
+      //   return <Redirect to={RoutePaths.HOME} />
       // }
       //
       // if (!redirectToHome && !this.props.isLoggedIn) {
       //   // main screen
-      //   return <Redirect to={ROUTES.LOGIN} />
+      //   return <Redirect to={RoutePaths.LOGIN} />
       // }
 
       return <ComposedComponent {...this.props} />

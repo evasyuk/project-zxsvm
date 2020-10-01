@@ -1,9 +1,30 @@
-import React, { Component } from 'react'
+import React from 'react'
+import ReactMarkdown from 'react-markdown'
+import styled from 'styled-components'
 
-class DataProtection extends Component {
-  render() {
-    return <div>DataProtection</div>
-  }
-}
+import { privacyPolicy } from '../../constants/privacyPolicy'
 
-export default DataProtection
+const Wrapper = styled.div`
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  overflow: auto;
+`
+
+const Markdown = styled(ReactMarkdown)`
+  width: 90%;
+  height: 90%;
+`
+
+const PrivacyContainer = () => (
+  <Wrapper>
+    <Markdown source={privacyPolicy} />
+  </Wrapper>
+)
+
+export default PrivacyContainer

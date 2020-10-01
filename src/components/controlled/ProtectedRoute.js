@@ -3,7 +3,7 @@ import propTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Route, Redirect } from 'react-router-dom'
 
-import { ROUTES } from '../../constants/routes'
+import { RoutePaths } from '../../constants/routePaths'
 import { getIsLoggedInStatus } from '../../state/selectors'
 
 const PrivateRoute = ({
@@ -20,7 +20,7 @@ const PrivateRoute = ({
       ) : (
         <Redirect
           to={{
-            pathname: ROUTES.LOGIN,
+            pathname: RoutePaths.LOGIN,
             state: { from: location },
           }}
         />

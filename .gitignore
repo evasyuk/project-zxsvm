@@ -8,6 +8,7 @@ node_modules
 /.firebaserc
 /firebase.json
 
+/public/assets
 /public/i.js
 /public/index.html
 

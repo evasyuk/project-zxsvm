@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { injectIntl } from 'react-intl'
 
-import { ROUTES } from '../../constants/routes'
+import { RoutePaths } from '../../constants/routePaths'
 import { login } from '../../state/pieces/auth'
 
 const mapStateToProps = null
@@ -28,7 +28,7 @@ function enhancer(ComposedComponent) {
       this.props.login(email, password)
     }
 
-    onSignUp = () => this.props.history.replace(ROUTES.SIGN_UP)
+    onSignUp = () => this.props.history.replace(RoutePaths.SIGN_UP)
 
     render() {
       return (

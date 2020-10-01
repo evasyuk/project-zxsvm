@@ -7,9 +7,10 @@ import { Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { injectIntl } from 'react-intl'
 
-import { ROUTES } from '../../constants/routes'
+import { RoutePaths } from '../../constants/routePaths'
 import { getIsLoggedInStatus } from '../../state/selectors'
 import { register } from '../../state/pieces/auth'
+import { getFullURL } from '../../helpers/getFullURL'
 
 const mapStateToProps = (state) => ({
   isLoggedIn: getIsLoggedInStatus(state),
@@ -23,14 +24,17 @@ function enhancer(ComposedComponent) {
   class WrapperLoginContainer extends Component {
     static propTypes = {
       intl: propTypes.object.isRequired,
+      location: propTypes.object.isRequired,
       history: propTypes.object.isRequired,
       isLoggedIn: propTypes.bool.isRequired,
       register: propTypes.func.isRequired,
     }
 
-    onLogin = () => this.props.history.push(ROUTES.LOGIN)
+    onLogin = () => this.props.history.push(RoutePaths.LOGIN)
 
-    onDataProtection = () => this.props.history.replace(ROUTES.DATA_PROTECTION)
+    onDataProtection = () => {
+      window.open(getFullURL(RoutePaths.PRIVACY))
+    }
 
     onSignUp = (data) => {
       this.props.register({
@@ -48,7 +52,7 @@ function enhancer(ComposedComponent) {
 
     render() {
       if (this.props.isLoggedIn) {
-        return <Redirect to={ROUTES.HOME} />
+        return <Redirect to={RoutePaths.HOME} />
       }
 
       return (
