@@ -4,6 +4,7 @@ import * as Yup from 'yup'
 const ALPHABET = /[a-zA-Z]+$/
 const EMAIL = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 const PHONE = /^\+(?:[0-9]?){6,14}[0-9]$/ // Regular expression matching E.164 formatted phone numbers
+const DELETE_ACC = /^delete account$/
 
 // TODO: intl error message
 export const LoginSchema = ({ intl }) =>
@@ -82,6 +83,48 @@ export const SignUpSchema = ({ intl }) =>
       .required(
         intl.formatMessage({
           id: 'VALIDATION_ERRORS.CONFIRM_PASSWORD_REQUIRED',
+        }),
+      ),
+  })
+
+export const ChangePasswordSchema = ({ intl }) =>
+  Yup.object().shape({
+    password: Yup.string()
+      .min(6, ({ min }) =>
+        intl.formatMessage(
+          { id: 'VALIDATION_ERRORS.PASSWORD_MIN_LENGTH' },
+          { count: min },
+        ),
+      )
+      .required(
+        intl.formatMessage({
+          id: 'VALIDATION_ERRORS.PASSWORD_REQUIRED',
+        }),
+      ),
+    passwordRepeat: Yup.string()
+      .oneOf(
+        [Yup.ref('password')],
+        intl.formatMessage({
+          id: 'VALIDATION_ERRORS.PASSWORD_REPEAT_REQUIRED',
+        }),
+      )
+      .required(
+        intl.formatMessage({
+          id: 'VALIDATION_ERRORS.CONFIRM_PASSWORD_REQUIRED',
+        }),
+      ),
+  })
+
+export const DeleteAccountSchema = ({ intl }) =>
+  Yup.object().shape({
+    text: Yup.string()
+      .matches(
+        DELETE_ACC,
+        intl.formatMessage({ id: 'VALIDATION_ERRORS.DELETE_ACC_MISMATCH' }),
+      )
+      .required(
+        intl.formatMessage({
+          id: 'VALIDATION_ERRORS.DELETE_ACC_CONFIRMATION_REQUIRED',
         }),
       ),
   })

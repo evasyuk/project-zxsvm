@@ -26,7 +26,7 @@ function enhancer(ComposedComponent, checkAuthAvailable = false) {
     render() {
       if (checkAuthAvailable && this.props.isLoggedIn) {
         // from login and signUp screens
-        return <Redirect to={RoutePaths.APP} />
+        return <Redirect to={RoutePaths.PROFILE} />
       }
 
       if (!checkAuthAvailable && !this.props.isLoggedIn) {

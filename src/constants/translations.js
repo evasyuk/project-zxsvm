@@ -3,8 +3,8 @@ const translations = {
   lang_key: 'en',
   ERROR: {
     AUTH: {
-      NOT_FOUND: 'No such user in the system',
-      VALIDATION_ERROR: 'Invalid user data',
+      NOT_FOUND: 'No such users in the system',
+      VALIDATION_ERROR: 'Invalid users data',
       EMAIL_ALREADY_IN_USE: 'Email(or phone) already in use',
     },
     'Network Error': 'Server is unavailable at this moment',
@@ -51,11 +51,26 @@ const translations = {
     LAST_NAME_REQUIRED: 'Last name is required',
     PHONE_NUMBER_INVALID: 'Invalid phone number',
     PHONE_NUMBER_REQUIRED: 'Phone number is required',
+    PASSWORD_REPEAT_REQUIRED: 'Confirm password is required',
+    DELETE_ACC_MISMATCH: 'print "delete account"',
+    DELETE_ACC_CONFIRMATION_REQUIRED: 'Delete account confirmation required',
   },
   HEADER: {
     PROFILE: 'Profile',
     SETTINGS: 'Settings',
     LOG_OUT: 'Log out',
+  },
+  PROFILE: {
+    CHANGE_PASSWORD: 'Change password',
+    DELETE_ACCOUNT: 'Delete account',
+
+    PASSWORD_LABEL: 'Password',
+    PASSWORD_REPEAT_LABEL: 'Password repeat',
+
+    DELETE_ACC_LABEL: 'Confirm your intention: print "delete account"',
+
+    PWD_CHANGE_BTN: 'Change password',
+    DELETE_ACC_BTN: 'Delete account',
   },
 }
 

@@ -1,0 +1,78 @@
+import { logout } from '../auth'
+
+import { getApiTypes } from '../../../helpers/getApiMiddlewareTypes'
+
+const CHANGE_PWD_TYPES = {
+  REQUEST: 'change_pwd_started',
+  SUCCESS: 'change_pwd_success',
+  FAILURE: 'change_pwd_failure',
+}
+
+const DELETE_ACC_TYPES = {
+  REQUEST: 'delete_acc_started',
+  SUCCESS: 'delete_acc_success',
+  FAILURE: 'delete_acc_failure',
+}
+
+export const TYPES_USERS = {
+  SET_MY_USER: 'set_my_user',
+
+  CHANGE_PWD: CHANGE_PWD_TYPES,
+  DELETE_ACC: DELETE_ACC_TYPES,
+}
+
+export const defaultStateUsers = {
+  myUser: null,
+
+  requestInProgress: false,
+}
+
+export const setMyUser = (userRecord) => ({
+  type: TYPES_USERS.SET_MY_USER,
+  update: { myUser: userRecord },
+})
+
+export const changePassword = (password) => ({
+  type: getApiTypes(CHANGE_PWD_TYPES),
+  promise: (api) => api.users.changePassword({ password }),
+})
+
+export const deletePassword = () => ({
+  type: getApiTypes(DELETE_ACC_TYPES),
+  promise: (api) => api.users.deleteMyUser(),
+})
+
+export const reducerUsers = (state = defaultStateUsers, action) => {
+  switch (action.type) {
+    case TYPES_USERS.DELETE_ACC.REQUEST:
+    case TYPES_USERS.CHANGE_PWD.REQUEST:
+      return {
+        ...state,
+        requestInProgress: true,
+      }
+    case TYPES_USERS.DELETE_ACC.SUCCESS:
+      action.asyncDispatch(logout())
+      return {
+        ...state,
+        requestInProgress: false,
+      }
+    case TYPES_USERS.CHANGE_PWD.SUCCESS:
+      return {
+        ...state,
+        requestInProgress: false,
+      }
+    case TYPES_USERS.DELETE_ACC.FAILURE:
+    case TYPES_USERS.CHANGE_PWD.FAILURE:
+      return {
+        ...state,
+        requestInProgress: false,
+      }
+    case TYPES_USERS.SET_MY_USER:
+      return {
+        ...state,
+        ...action.update,
+      }
+    default:
+      return state
+  }
+}

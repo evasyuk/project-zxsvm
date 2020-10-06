@@ -1,6 +1,9 @@
-export { default as Input } from './Input'
-export { default as Button } from './Button'
-export { default as Title } from './Title'
-export { default as Text } from './Text'
-export { default as Checkbox } from './Checkbox'
-export { default as LinkButton } from './LinkButton'
+import Avatar from './Avatar'
+import Input from './Input'
+import Title from './Title'
+import Text from './Text'
+import Checkbox from './Checkbox'
+import LinkButton from './LinkButton'
+import Button from './Button'
+
+export { Avatar, Input, Title, Text, Checkbox, LinkButton, Button }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import propTypes from 'prop-types'
-import { Button } from '../../components/base'
+import { Button } from '../../components'
 
 class DataProtectionContainer extends Component {
   onBack = () => this.props.history.goBack()

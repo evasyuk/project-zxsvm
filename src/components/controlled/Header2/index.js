@@ -21,10 +21,7 @@ const logo = require('../../../assets/gennyware_logo.png')
 
 const useStyles = (theme) =>
   makeStyles((muiTheme) => ({
-    root: {
-      flexGrow: 1,
-      backgroundColor: 'yellow',
-    },
+    root: {},
     appBar: {
       backgroundColor: theme.colors.white,
       color: (themeDerived) => themeDerived.colors.black,
@@ -33,7 +30,7 @@ const useStyles = (theme) =>
       marginRight: muiTheme.spacing(2),
     },
     title: {
-      flexGrow: 1,
+      flex: 1,
     },
   }))
 
@@ -69,66 +66,64 @@ const Header2 = ({ intl, theme, onProfile, onLogout, onSettings }) => {
   }
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static" className={classes.appBar}>
-        <Toolbar>
-          <>
-            <NavigationDrawer drawerOpen={drawer} setDrawerOpen={setDrawer} />
-            <IconButton
-              edge="start"
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="menu"
-              onClick={() => setDrawer(true)}
-            >
-              <MenuIcon />
-            </IconButton>
-          </>
-          <ImageWrap>
-            <img src={logo} alt="logo" />
-          </ImageWrap>
-          <Typography variant="h6" className={classes.title}>
-            ZXSVM
-          </Typography>
-          <div>
-            <IconButton
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleMenu}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorEl}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={open}
-              onClose={handleMenuClose}
-            >
-              <MenuItem onClick={handleProfile}>
-                {intl.formatMessage({ id: 'HEADER.PROFILE' })}
-              </MenuItem>
-              <MenuItem onClick={handleSettings}>
-                {intl.formatMessage({ id: 'HEADER.SETTINGS' })}
-              </MenuItem>
-              <MenuItem onClick={handleLogout}>
-                {intl.formatMessage({ id: 'HEADER.LOG_OUT' })}
-              </MenuItem>
-            </Menu>
-          </div>
-        </Toolbar>
-      </AppBar>
-    </div>
+    <AppBar position="static" className={classes.appBar}>
+      <Toolbar>
+        <>
+          <NavigationDrawer drawerOpen={drawer} setDrawerOpen={setDrawer} />
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+            onClick={() => setDrawer(true)}
+          >
+            <MenuIcon />
+          </IconButton>
+        </>
+        <ImageWrap>
+          <img src={logo} alt="logo" />
+        </ImageWrap>
+        <Typography variant="h6" className={classes.title}>
+          ZXSVM
+        </Typography>
+        <div>
+          <IconButton
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleMenu}
+            color="inherit"
+          >
+            <AccountCircle />
+          </IconButton>
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorEl}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            open={open}
+            onClose={handleMenuClose}
+          >
+            <MenuItem onClick={handleProfile}>
+              {intl.formatMessage({ id: 'HEADER.PROFILE' })}
+            </MenuItem>
+            <MenuItem onClick={handleSettings}>
+              {intl.formatMessage({ id: 'HEADER.SETTINGS' })}
+            </MenuItem>
+            <MenuItem onClick={handleLogout}>
+              {intl.formatMessage({ id: 'HEADER.LOG_OUT' })}
+            </MenuItem>
+          </Menu>
+        </div>
+      </Toolbar>
+    </AppBar>
   )
 }
 

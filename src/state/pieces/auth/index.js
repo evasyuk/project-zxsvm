@@ -1,6 +1,7 @@
-import { showErrorNotification } from '../notification'
+import { setMyUser } from '../users'
 
-const getApiTypes = (types) => [types.REQUEST, types.SUCCESS, types.FAILURE]
+import { getApiTypes } from '../../../helpers/getApiMiddlewareTypes'
+import { onActionFailure } from '../../../helpers/onActionFailure'
 
 const LOGIN_TYPES = {
   REQUEST: 'login_started',
@@ -56,10 +57,7 @@ export const reducerAuth = (state = defaultState, action) => {
   switch (action.type) {
     case TYPES_AUTH.SIGNUP.FAILURE:
     case TYPES_AUTH.LOGIN.FAILURE:
-      if (action.fields) {
-        console.log('absent fields', action.fields)
-      }
-      action.asyncDispatch(showErrorNotification(`ERROR.${action.error}`))
+      onActionFailure(action)
 
       return {
         ...state,
@@ -70,6 +68,8 @@ export const reducerAuth = (state = defaultState, action) => {
       // eslint-disable-next-line no-case-declarations
       const { token, userRecord } = action.data
 
+      action.asyncDispatch(setMyUser(userRecord))
+
       return {
         ...state,
         missingAuth: false,
@@ -77,7 +77,6 @@ export const reducerAuth = (state = defaultState, action) => {
         requestInProgress: false,
 
         token,
-        userRecord,
       }
     case TYPES_AUTH.SIGNUP.REQUEST:
     case TYPES_AUTH.LOGIN.REQUEST:
