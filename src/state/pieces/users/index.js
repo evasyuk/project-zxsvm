@@ -1,6 +1,7 @@
 import { logout } from '../auth'
 
 import { getApiTypes } from '../../../helpers/getApiMiddlewareTypes'
+import { onActionFailure } from '../../../helpers/onActionFailure'
 
 const CHANGE_PWD_TYPES = {
   REQUEST: 'change_pwd_started',
@@ -32,14 +33,16 @@ export const setMyUser = (userRecord) => ({
   update: { myUser: userRecord },
 })
 
-export const changePassword = (password) => ({
-  type: getApiTypes(CHANGE_PWD_TYPES),
+export const changePassword = (password, callbacks) => ({
+  types: getApiTypes(CHANGE_PWD_TYPES),
   promise: (api) => api.users.changePassword({ password }),
+  callbacks,
 })
 
-export const deletePassword = () => ({
-  type: getApiTypes(DELETE_ACC_TYPES),
+export const deleteAccount = (callbacks) => ({
+  types: getApiTypes(DELETE_ACC_TYPES),
   promise: (api) => api.users.deleteMyUser(),
+  callbacks,
 })
 
 export const reducerUsers = (state = defaultStateUsers, action) => {
@@ -57,12 +60,21 @@ export const reducerUsers = (state = defaultStateUsers, action) => {
         requestInProgress: false,
       }
     case TYPES_USERS.CHANGE_PWD.SUCCESS:
+      if (action?.callbacks?.onSuccess) {
+        action.asyncDispatch(action.callbacks.onSuccess)
+      }
       return {
         ...state,
         requestInProgress: false,
       }
     case TYPES_USERS.DELETE_ACC.FAILURE:
     case TYPES_USERS.CHANGE_PWD.FAILURE:
+      if (action?.callbacks?.onFailure) {
+        action.asyncDispatch(action.callbacks.onFailure)
+      } else {
+        onActionFailure(action)
+      }
+
       return {
         ...state,
         requestInProgress: false,

@@ -20,3 +20,7 @@ export const ActionsBlockWrapper = styled.div`
 export const ActionWrapper = styled.div`
   margin: 5px;
 `
+
+export const ModalWrapper = styled.div`
+  position: absolute;
+`

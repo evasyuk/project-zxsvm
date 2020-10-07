@@ -4,6 +4,8 @@ export const getLoadingStatus = createSelector(
   (state) => ({
     loading: state.loading,
     auth: state.auth,
+    users: state.users,
   }),
-  ({ loading, auth }) => loading.is_loading || auth.requestInProgress,
+  ({ loading, auth, users }) =>
+    loading.is_loading || auth.requestInProgress || users.requestInProgress,
 )

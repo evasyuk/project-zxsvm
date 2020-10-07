@@ -45,7 +45,13 @@ const ChangePasswordModal = ({
 }) => (
   <Modal
     isOpen={isOpen}
-    onRequestClose={close}
+    onAfterOpen={() => {
+      document.body.style.overflow = 'hidden'
+    }}
+    onRequestClose={() => {
+      close()
+      document.body.removeAttribute('style')
+    }}
     style={defaultStyles}
     contentLabel="Change Password Modal"
   >

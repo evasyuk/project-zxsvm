@@ -18,6 +18,22 @@ class ApiClient {
       withCredentials: true,
     })
 
+    this.client.interceptors.request.use(
+      (config) => {
+        if (!config?.headers?.Authorization) {
+          const newConfig = {
+            headers: {},
+            ...config,
+          }
+          newConfig.headers.Authorization = `Bearer ${this.token}`
+
+          return newConfig
+        }
+        return config
+      },
+      (error) => Promise.reject(error),
+    )
+
     this.client.interceptors.response.use(
       (response) => response,
       (error) => {

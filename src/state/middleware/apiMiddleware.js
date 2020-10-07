@@ -10,6 +10,10 @@ export default function apiMiddleware(api) {
 
     if (!promise) return next(action)
 
+    if (!types) {
+      throw Error('developer\'s error: api request missing "types"')
+    }
+
     const [REQUEST, SUCCESS, FAILURE] = types
 
     next({ ...rest, type: REQUEST })

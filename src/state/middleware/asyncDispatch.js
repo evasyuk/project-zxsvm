@@ -3,7 +3,15 @@ const asyncDispatchMiddleware = (store) => (next) => (action) => {
   let actionQueue = []
 
   function flushQueue() {
-    actionQueue.forEach((a) => store.dispatch(a)) // flush queue
+    actionQueue.forEach((a) => {
+      if (typeof a === 'function') {
+        a()
+      } else if (a instanceof Promise) {
+        throw Error('asyncDispatch do not support "Promise"')
+      } else {
+        store.dispatch(a)
+      }
+    }) // flush queue
     actionQueue = []
   }
 

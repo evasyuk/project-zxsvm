@@ -9,7 +9,7 @@ import { injectIntl } from 'react-intl'
 import { getMyUser, getModalState } from '../../state/selectors'
 import { changeModalState } from '../../state/pieces/modals'
 
-// import { changePassword, deletePassword } from '../../state/pieces/users'
+import { changePassword, deleteAccount } from '../../state/pieces/users'
 
 const mapStateToProps = (state) => ({
   myUser: getMyUser(state),
@@ -19,6 +19,9 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
+  changePasswordRequest: changePassword,
+  deleteAccountRequest: deleteAccount,
+
   openChangePwdModal: changeModalState('changePasswordModal', true),
   closeChangePwdModal: changeModalState('changePasswordModal', false),
 
@@ -31,8 +34,9 @@ function enhancer(ComposedComponent) {
     static propTypes = {
       intl: object.isRequired,
       myUser: object.isRequired,
+
       changePasswordRequest: func.isRequired,
-      deletePasswordRequest: func.isRequired,
+      deleteAccountRequest: func.isRequired,
 
       isChangePwdModalOpen: bool.isRequired,
       isDeleteAccModalOpen: bool.isRequired,
@@ -49,12 +53,14 @@ function enhancer(ComposedComponent) {
         id: `${group}.${element}`,
       })
 
-    onChangePassword = () => {
-      // this.props.changePasswordRequest(password)
+    onChangePassword = (password) => {
+      this.props.changePasswordRequest(password, {
+        onSuccess: this.props.closeChangePwdModal,
+      })
     }
 
-    onDeletePassword = () => {
-      // this.props.deletePasswordRequest()
+    onDeleteAccount = () => {
+      this.props.deleteAccountRequest()
     }
 
     render() {
@@ -62,8 +68,8 @@ function enhancer(ComposedComponent) {
         <ComposedComponent
           {...this.props}
           mIntl={this.mIntl}
-          // onChangePassword={this.onChangePassword}
-          // onDeletePassword={this.onDeletePassword}
+          onChangePassword={this.onChangePassword}
+          onDeleteAccount={this.onDeleteAccount}
         />
       )
     }

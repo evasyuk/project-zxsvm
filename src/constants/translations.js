@@ -6,6 +6,7 @@ const translations = {
       NOT_FOUND: 'No such users in the system',
       VALIDATION_ERROR: 'Invalid users data',
       EMAIL_ALREADY_IN_USE: 'Email(or phone) already in use',
+      TOKEN_NOT_FOUND: 'Network request requires token',
     },
     'Network Error': 'Server is unavailable at this moment',
   },

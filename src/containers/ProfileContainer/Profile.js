@@ -14,6 +14,7 @@ import {
   ContactBlockWrapper,
   ActionsBlockWrapper,
   ActionWrapper,
+  ModalWrapper,
 } from './styles'
 
 import ChangePasswordModal from '../../components/modals/ChangePasswordModal'
@@ -79,6 +80,8 @@ class Profile extends Component {
       openDeleteAccModal,
       closeChangePwdModal,
       closeDeleteAccModal,
+      onChangePassword,
+      onDeleteAccount,
     } = this.props
 
     // TODO: fix bug with crash on myUser === null
@@ -88,20 +91,22 @@ class Profile extends Component {
 
     return (
       <>
-        <ChangePasswordModal
-          isOpen={isChangePwdModalOpen}
-          close={closeChangePwdModal}
-          intl={intl}
-          mIntl={mIntl}
-          onChangePassword={() => console.log('onChangePassword!')}
-        />
-        <DeleteAccountModal
-          isOpen={isDeleteAccModalOpen}
-          close={closeDeleteAccModal}
-          intl={intl}
-          mIntl={mIntl}
-          onDeleteAccount={() => console.log('onDeleteAccount!')}
-        />
+        <ModalWrapper>
+          <ChangePasswordModal
+            isOpen={isChangePwdModalOpen}
+            close={closeChangePwdModal}
+            intl={intl}
+            mIntl={mIntl}
+            onChangePassword={onChangePassword}
+          />
+          <DeleteAccountModal
+            isOpen={isDeleteAccModalOpen}
+            close={closeDeleteAccModal}
+            intl={intl}
+            mIntl={mIntl}
+            onDeleteAccount={onDeleteAccount}
+          />
+        </ModalWrapper>
         <div>
           {this.renderMobile({
             displayName: myUser.displayName,
@@ -127,8 +132,8 @@ Profile.propTypes = {
   openDeleteAccModal: func.isRequired,
   closeChangePwdModal: func.isRequired,
   closeDeleteAccModal: func.isRequired,
-  // onChangePassword: func.isRequired,
-  // onDeletePassword: func.isRequired,
+  onChangePassword: func.isRequired,
+  onDeleteAccount: func.isRequired,
 }
 
 export default Profile

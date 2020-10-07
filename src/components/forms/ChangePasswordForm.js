@@ -13,7 +13,7 @@ const ChangePasswordForm = ({ intl, onChangePassword }) => (
   <Formik
     initialValues={{ password: '', passwordRepeat: '' }}
     validationSchema={ChangePasswordSchema({ intl })}
-    onSubmit={(values) => onChangePassword(values.password, values.passwordRepeat)}
+    onSubmit={(values) => onChangePassword(values.password)}
   >
     {({ values, errors, handleBlur, handleSubmit, handleChange, touched }) => (
       <form onSubmit={handleSubmit}>

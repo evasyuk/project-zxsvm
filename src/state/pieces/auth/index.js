@@ -1,3 +1,5 @@
+import ApiClient from '../../../api/apiClient'
+
 import { setMyUser } from '../users'
 
 import { getApiTypes } from '../../../helpers/getApiMiddlewareTypes'
@@ -70,6 +72,8 @@ export const reducerAuth = (state = defaultState, action) => {
 
       action.asyncDispatch(setMyUser(userRecord))
 
+      ApiClient.singleton.setToken(token)
+
       return {
         ...state,
         missingAuth: false,
@@ -85,6 +89,7 @@ export const reducerAuth = (state = defaultState, action) => {
         requestInProgress: true,
       }
     case LOGOUT_TYPE:
+      ApiClient.singleton.removeToken()
       return defaultState
     default:
       return state
