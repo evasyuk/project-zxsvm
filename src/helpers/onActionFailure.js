@@ -4,5 +4,7 @@ export const onActionFailure = (action) => {
   if (action.fields) {
     console.log('absent fields', action.fields)
   }
-  action.asyncDispatch(showErrorNotification(`ERROR.${action.error}`))
+  action.asyncDispatch(
+    showErrorNotification({ message: `ERROR.${action.error}` }),
+  )
 }

@@ -2,6 +2,7 @@ import { logout } from '../auth'
 
 import { getApiTypes } from '../../../helpers/getApiMiddlewareTypes'
 import { onActionFailure } from '../../../helpers/onActionFailure'
+import { showSuccessNotification } from '../notification'
 
 const CHANGE_PWD_TYPES = {
   REQUEST: 'change_pwd_started',
@@ -60,6 +61,9 @@ export const reducerUsers = (state = defaultStateUsers, action) => {
         requestInProgress: false,
       }
     case TYPES_USERS.CHANGE_PWD.SUCCESS:
+      action.asyncDispatch(
+        showSuccessNotification({ message: 'SUCCESS.PWD_CHANGED' }),
+      )
       if (action?.callbacks?.onSuccess) {
         action.asyncDispatch(action.callbacks.onSuccess)
       }

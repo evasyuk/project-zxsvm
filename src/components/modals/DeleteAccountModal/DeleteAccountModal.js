@@ -2,17 +2,17 @@ import React from 'react'
 import { func, object, bool } from 'prop-types'
 import Modal from 'react-modal'
 
-import { defaultStyles } from './styles'
+import { defaultStyles } from '../styles'
 import {
   MobileMainContent,
   MobileMainSection,
   MobileNoContent,
   MobileTopWrapper,
   MobileWindow,
-} from '../styles'
+} from '../../styles'
 
-import DeleteAccountForm from '../forms/DeleteAccountForm'
-import { Title } from '../base'
+import DeleteAccountForm from '../../forms/DeleteAccountForm'
+import { Title } from '../../base'
 
 // prettier-ignore
 const renderMobile = ({ intl, mIntl, onDeleteAccount }) => (

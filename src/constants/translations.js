@@ -1,6 +1,9 @@
 const translations = {
   lang_label: 'English',
   lang_key: 'en',
+  SUCCESS: {
+    PWD_CHANGED: 'Password changed successfully',
+  },
   ERROR: {
     AUTH: {
       NOT_FOUND: 'No such users in the system',

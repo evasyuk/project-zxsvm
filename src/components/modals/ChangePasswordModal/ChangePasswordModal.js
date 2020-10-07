@@ -2,17 +2,17 @@ import React from 'react'
 import { func, object, bool } from 'prop-types'
 import Modal from 'react-modal'
 
-import { defaultStyles } from './styles'
+import { defaultStyles } from '../styles'
 import {
   MobileMainContent,
   MobileMainSection,
   MobileNoContent,
   MobileTopWrapper,
   MobileWindow,
-} from '../styles'
+} from '../../styles'
 
-import ChangePasswordForm from '../forms/ChangePasswordForm'
-import { Title } from '../base'
+import ChangePasswordForm from '../../forms/ChangePasswordForm'
+import { Title } from '../../base'
 
 const renderMobile = ({ intl, mIntl, onChangePassword }) => (
   <MobileWindow>

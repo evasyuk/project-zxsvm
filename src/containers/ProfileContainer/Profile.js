@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { object, func, bool } from 'prop-types'
+import { object, func } from 'prop-types'
 
 import {
   MobileWindow,
@@ -70,19 +70,7 @@ class Profile extends Component {
   )
 
   render() {
-    const {
-      myUser,
-      mIntl,
-      intl,
-      isChangePwdModalOpen,
-      isDeleteAccModalOpen,
-      openChangePwdModal,
-      openDeleteAccModal,
-      closeChangePwdModal,
-      closeDeleteAccModal,
-      onChangePassword,
-      onDeleteAccount,
-    } = this.props
+    const { myUser, mIntl, openChangePwdModal, openDeleteAccModal } = this.props
 
     // TODO: fix bug with crash on myUser === null
     if (!myUser?.displayName) {
@@ -92,20 +80,8 @@ class Profile extends Component {
     return (
       <>
         <ModalWrapper>
-          <ChangePasswordModal
-            isOpen={isChangePwdModalOpen}
-            close={closeChangePwdModal}
-            intl={intl}
-            mIntl={mIntl}
-            onChangePassword={onChangePassword}
-          />
-          <DeleteAccountModal
-            isOpen={isDeleteAccModalOpen}
-            close={closeDeleteAccModal}
-            intl={intl}
-            mIntl={mIntl}
-            onDeleteAccount={onDeleteAccount}
-          />
+          <ChangePasswordModal />
+          <DeleteAccountModal />
         </ModalWrapper>
         <div>
           {this.renderMobile({
@@ -125,15 +101,8 @@ class Profile extends Component {
 Profile.propTypes = {
   myUser: object.isRequired,
   mIntl: func.isRequired,
-  intl: object.isRequired,
-  isChangePwdModalOpen: bool.isRequired,
-  isDeleteAccModalOpen: bool.isRequired,
   openChangePwdModal: func.isRequired,
   openDeleteAccModal: func.isRequired,
-  closeChangePwdModal: func.isRequired,
-  closeDeleteAccModal: func.isRequired,
-  onChangePassword: func.isRequired,
-  onDeleteAccount: func.isRequired,
 }
 
 export default Profile

@@ -1,6 +1,7 @@
 const NOTIFICATION_TYPES = {
   ERROR: 'error',
   DEFAULT: 'default',
+  SUCCESS: 'success',
 }
 
 export const NOTIFICATION_ACTION_TYPES = {
@@ -12,9 +13,35 @@ const defaultState = {
   messageQueue: [],
 }
 
-export const showErrorNotification = (message, id = 'error') => ({
+export const showSuccessNotification = ({
+  message,
+  id = 'success',
+  type = NOTIFICATION_TYPES.SUCCESS,
+  i8nRequired = true,
+}) => _showErrorNotification(message, id, type, i8nRequired)
+
+export const showErrorNotification = ({
+  message,
+  id = 'error',
+  type = NOTIFICATION_TYPES.ERROR,
+  i8nRequired = true,
+}) => _showErrorNotification(message, id, type, i8nRequired)
+
+// eslint-disable-next-line no-underscore-dangle
+const _showErrorNotification = (
+  message,
+  id = 'error',
+  type = NOTIFICATION_TYPES.ERROR,
+  i8nRequired = true,
+) => ({
   type: NOTIFICATION_ACTION_TYPES.SHOW,
-  update: { message, notificationType: NOTIFICATION_TYPES.DEFAULT, id },
+  update: {
+    message,
+    notificationType: NOTIFICATION_TYPES.DEFAULT,
+    id,
+    type,
+    i8nRequired,
+  },
 })
 
 export const clearAllNotifications = () => ({
