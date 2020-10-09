@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import propTypes from 'prop-types'
 
-import { Text, LinkButton } from '../../components'
+import { Text, LinkButton, Logo } from '../../components'
 
 import { LoginForm } from '../../components/forms'
 import {
@@ -13,9 +13,7 @@ import {
   ScreenWrapper,
 } from '../../components/styles'
 
-import { LogoWrap, ProjectNameLine } from './styles'
-
-const logo = require('../../assets/gennyware_logo_200.png')
+import { ProjectNameLine } from './styles'
 
 const noAccountBlock = (intl, onSignUp) => (
   <MobileTopWrapper>
@@ -42,9 +40,7 @@ class SignUp extends Component {
         <MobileMainSection>
           <MobileTopWrapper times={3}>
             <ProjectNameLine>
-              <LogoWrap>
-                <img src={logo} alt="logo" />
-              </LogoWrap>
+              <Logo />
             </ProjectNameLine>
 
             <MobileTopWrapper>

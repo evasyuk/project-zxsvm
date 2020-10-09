@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
 
+import HeaderLanding from '../../components/controlled/HeaderLanding'
+
 class LandingPage extends Component {
   render() {
-    console.log('? LandingPage')
-    return <div>LandingPage</div>
+    return (
+      <>
+        <HeaderLanding />
+        <div>LandingPage</div>
+      </>
+    )
   }
 }
 
