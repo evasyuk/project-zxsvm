@@ -16,12 +16,12 @@ import { Logo, Title, Button } from '../..'
 const renderLeft = ({ isLoggedIn, goToApp, goToLogin, goToSignUp }) => (
   <RightContentWrapper>
     {isLoggedIn ? (
-      <Button title="Open app" height={30} onClick={goToApp} />
+      <Button title="Open app" onClick={goToApp} />
     ) : (
       <>
-        <Button title="Sign Up" height={30} onClick={goToSignUp} />
-        <div style={{ width: '60px' }} />
-        <Button title="Login" height={30} onClick={goToLogin} />
+        <Button title="Sign Up" onClick={goToSignUp} />
+        <div style={{ width: '10px' }} />
+        <Button title="Login" onClick={goToLogin} />
       </>
     )}
   </RightContentWrapper>

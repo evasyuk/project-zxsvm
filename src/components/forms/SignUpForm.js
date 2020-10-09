@@ -136,6 +136,7 @@ const SignUpForm = ({ intl, onSignUp, onDataProtection }) => (
         <ButtonsWrap>
           <Button
             type="submit"
+            fullWidth
             disabled={
               Object.values(values).some((e) => e === '') ||
               !values.sign_up_agreed

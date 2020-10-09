@@ -41,7 +41,7 @@ const LoginForm = ({ intl, onLogin }) => (
             type="submit"
             disabled={!values.password || !values.email}
             title={intl.formatMessage({ id: 'LOG_IN.BUTTON' })}
-            width="152px"
+            fullWidth
             id="loginButton"
           />
         </MobileTopWrapper>

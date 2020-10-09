@@ -44,10 +44,8 @@ export const RightContentWrapper = styled.div`
   flex-direction: row;
 
   align-items: center;
+  justify-content: center;
 
-  width: 240px;
+  width: 200px;
   height: 100%;
-
-  padding-left: 10px;
-  padding-right: 10px;
 `
