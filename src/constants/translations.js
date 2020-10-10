@@ -13,6 +13,9 @@ const translations = {
     },
     'Network Error': 'Server is unavailable at this moment',
   },
+  LANDING: {
+    MORE_ON: 'More on',
+  },
   LOG_IN: {
     EMAIL_INPUT: 'E-mail',
     PASSWORD_INPUT: 'Password',

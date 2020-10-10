@@ -13,3 +13,5 @@ node_modules
 /public/index.html
 
 .env
+
+/codecept/failed/
