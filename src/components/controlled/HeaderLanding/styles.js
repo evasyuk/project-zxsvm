@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 export const HeaderLandingWrapper = styled.div`
+  position: fixed;
+
   width: 100%;
   height: 64px;
 
@@ -8,6 +10,8 @@ export const HeaderLandingWrapper = styled.div`
   align-items: flex-start;
 
   justify-content: space-between;
+
+  background-color: white;
 
   box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.15);
 `
