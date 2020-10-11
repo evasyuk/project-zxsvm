@@ -34,10 +34,10 @@ function enhancer(ComposedComponent) {
 
     onSignUp = (data) => {
       this.props.register({
-        name: data.sign_up_name,
-        email: data.sign_up_email,
-        phone: data.sign_up_phone,
-        password: data.sign_up_password,
+        name: data['sign-up-name-input'],
+        email: data['sign-up-email-input'],
+        phone: data['sign-up-phone-input'],
+        password: data['sign-up-password-input'],
       })
     }
 

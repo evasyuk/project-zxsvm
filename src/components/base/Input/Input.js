@@ -29,6 +29,7 @@ class Input extends Component {
       iconName,
       error,
       id,
+      idError,
       value,
       required,
       startAdornment,
@@ -82,7 +83,11 @@ class Input extends Component {
             </EndAdornment>
           )}
         </InputContainer>
-        {!!error && <InputErrorArea>{error}</InputErrorArea>}
+        {!!error && (
+          <InputErrorArea id={idError || (id ? `${id}-error` : undefined)}>
+            {error}
+          </InputErrorArea>
+        )}
       </InputWrapper>
     )
   }
@@ -90,6 +95,7 @@ class Input extends Component {
 
 Input.propTypes = {
   id: propTypes.string.isRequired,
+  idError: propTypes.string,
   theme: propTypes.object.isRequired,
   onChange: propTypes.func.isRequired,
   type: propTypes.string,
@@ -111,6 +117,7 @@ Input.propTypes = {
 }
 
 Input.defaultProps = {
+  idError: undefined,
   type: INPUT_TYPE.TEXT,
   label: '',
   placeholder: '',

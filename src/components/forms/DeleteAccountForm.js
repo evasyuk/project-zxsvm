@@ -11,27 +11,27 @@ import { MobileTopWrapper } from '../styles'
 // prettier-ignore
 const DeleteAccountForm = ({ intl, onDeleteAccount }) => (
   <Formik
-    initialValues={{ text: '' }}
+    initialValues={{ 'delete-acc-input': '' }}
     validationSchema={DeleteAccountSchema({ intl })}
     onSubmit={() => onDeleteAccount()}
   >
     {({ values, errors, handleBlur, handleSubmit, handleChange, touched }) => (
       <form onSubmit={handleSubmit}>
         <Input
-          id="text"
+          id="delete-acc-input"
           type="password"
           label={intl.formatMessage({ id: 'PROFILE.DELETE_ACC_LABEL' })}
-          value={values.text}
+          value={values['delete-acc-input']}
           onChange={handleChange}
-          error={errors.text && touched.text ? errors.text : ''}
+          error={errors['delete-acc-input'] && touched['delete-acc-input'] ? errors['delete-acc-input'] : ''}
           onBlur={handleBlur}
           placeholder=""
         />
         <MobileTopWrapper>
           <Button
-            id="deleteAccButton"
+            id="delete-account-confirm-btn"
             type="submit"
-            disabled={!values.password || !values.passwordRepeat}
+            disabled={!values['delete-acc-input'] || errors['delete-acc-input']}
             title={intl.formatMessage({ id: 'PROFILE.DELETE_ACC_BTN' })}
             width="152px"
           />

@@ -19,7 +19,7 @@ export const LoginSchema = ({ intl }) =>
 
 export const SignUpSchema = ({ intl }) =>
   Yup.object().shape({
-    sign_up_name: Yup.string()
+    'sign-up-name-input': Yup.string()
       .min(2, ({ min }) =>
         intl.formatMessage(
           { id: 'VALIDATION_ERRORS.NAME_MIN_LENGTH' },
@@ -39,7 +39,17 @@ export const SignUpSchema = ({ intl }) =>
         }),
       )
       .required(intl.formatMessage({ id: 'VALIDATION_ERRORS.NAME_REQUIRED' })),
-    sign_up_phone: Yup.string()
+    'sign-up-email-input': Yup.string()
+      .matches(
+        EMAIL,
+        intl.formatMessage({ id: 'VALIDATION_ERRORS.EMAIL_INVALID' }),
+      )
+      .required(
+        intl.formatMessage({
+          id: 'VALIDATION_ERRORS.EMAIL_REQUIRED',
+        }),
+      ),
+    'sign-up-phone-input': Yup.string()
       .matches(
         PHONE,
         intl.formatMessage({
@@ -51,17 +61,7 @@ export const SignUpSchema = ({ intl }) =>
           id: 'VALIDATION_ERRORS.PHONE_NUMBER_REQUIRED',
         }),
       ),
-    sign_up_email: Yup.string()
-      .matches(
-        EMAIL,
-        intl.formatMessage({ id: 'VALIDATION_ERRORS.EMAIL_INVALID' }),
-      )
-      .required(
-        intl.formatMessage({
-          id: 'VALIDATION_ERRORS.EMAIL_REQUIRED',
-        }),
-      ),
-    sign_up_password: Yup.string()
+    'sign-up-password-input': Yup.string()
       .min(6, ({ min }) =>
         intl.formatMessage(
           { id: 'VALIDATION_ERRORS.PASSWORD_MIN_LENGTH' },
@@ -73,9 +73,9 @@ export const SignUpSchema = ({ intl }) =>
           id: 'VALIDATION_ERRORS.PASSWORD_REQUIRED',
         }),
       ),
-    sign_up_confirm_password: Yup.string()
+    'sign-up-confirm-password-input': Yup.string()
       .oneOf(
-        [Yup.ref('sign_up_password')],
+        [Yup.ref('sign-up-password-input')],
         intl.formatMessage({
           id: 'VALIDATION_ERRORS.PASSWORD_NOT_MATCH',
         }),
@@ -117,7 +117,7 @@ export const ChangePasswordSchema = ({ intl }) =>
 
 export const DeleteAccountSchema = ({ intl }) =>
   Yup.object().shape({
-    text: Yup.string()
+    'delete-acc-input': Yup.string()
       .matches(
         DELETE_ACC,
         intl.formatMessage({ id: 'VALIDATION_ERRORS.DELETE_ACC_MISMATCH' }),

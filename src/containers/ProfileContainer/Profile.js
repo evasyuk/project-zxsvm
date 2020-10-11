@@ -37,7 +37,11 @@ class Profile extends Component {
           <Button title={mIntl('CHANGE_PASSWORD')} onClick={onChangePassword} />
         </ActionWrapper>
         <ActionWrapper>
-          <Button title={mIntl('DELETE_ACCOUNT')} onClick={onDeletePassword} />
+          <Button
+            title={mIntl('DELETE_ACCOUNT')}
+            onClick={onDeletePassword}
+            id="delete-acc-btn"
+          />
         </ActionWrapper>
       </ActionsBlockWrapper>
     </ContactBlockWrapper>

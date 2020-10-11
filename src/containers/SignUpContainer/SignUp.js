@@ -26,6 +26,7 @@ const haveAccountBlock = (intl, onLogin) => (
       title={intl.formatMessage({
         id: 'SIGN_UP.BACK_TO_LOGIN',
       })}
+      id="back-to-login-btn"
     />
   </MobileTopWrapper>
 )

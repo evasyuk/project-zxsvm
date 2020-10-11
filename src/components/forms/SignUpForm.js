@@ -8,113 +8,87 @@ import { Button, Input, Checkbox, LinkButton } from '../index'
 
 import { ButtonsWrap, AgreementWrap, AgreementInner } from './styles'
 
+const getInput = ({
+  intl,
+  values,
+  handleChange,
+  handleBlur,
+  errors,
+  touched,
+  mId,
+  intlLabelId,
+  intlPlaceholderId,
+}) => (
+  <Input
+    id={mId}
+    value={values[mId]}
+    label={intl.formatMessage({
+      id: intlLabelId,
+    })}
+    onChange={handleChange}
+    onBlur={handleBlur}
+    error={errors[mId] && touched[mId] ? errors[mId] : ''}
+    placeholder={intl.formatMessage({
+      id: intlPlaceholderId,
+    })}
+  />
+)
+
 const SignUpForm = ({ intl, onSignUp, onDataProtection }) => (
   <Formik
     initialValues={{
-      sign_up_name: '',
-      sign_up_email: '',
-      sign_up_password: '',
-      sign_up_confirm_password: '',
-      sign_up_phone: '',
-      sign_up_agreed: false,
+      'sign-up-name-input': '',
+      'sign-up-email-input': '',
+      'sign-up-phone-input': '',
+      'sign-up-password-input': '',
+      'sign-up-confirm-password-input': '',
+      'sign-up-privacy-agreed-checkbox': false,
     }}
     validationSchema={SignUpSchema({ intl })}
     onSubmit={onSignUp}
   >
-    {({ values, errors, handleSubmit, handleChange, handleBlur, touched }) => (
-      <form onSubmit={handleSubmit} data-selector="sign_up-form">
-        <Input
-          id="sign_up_name"
-          value={values.sign_up_name}
-          label={intl.formatMessage({
-            id: 'SIGN_UP.NAME_INPUT',
-          })}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          error={
-            errors.sign_up_name && touched.sign_up_name
-              ? errors.sign_up_name
-              : ''
-          }
-          placeholder={intl.formatMessage({
-            id: 'SIGN_UP.NAME_INPUT',
-          })}
-        />
-        <Input
-          id="sign_up_email"
-          value={values.sign_up_email}
-          label={intl.formatMessage({
-            id: 'SIGN_UP.EMAIL_INPUT',
-          })}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          error={
-            errors.sign_up_email && touched.sign_up_email
-              ? errors.sign_up_email
-              : ''
-          }
-          placeholder={intl.formatMessage({
-            id: 'SIGN_UP.EMAIL_INPUT',
-          })}
-        />
-        <Input
-          id="sign_up_phone"
-          value={values.sign_up_phone}
-          label={intl.formatMessage({
-            id: 'SIGN_UP.PHONE_NUMBER',
-          })}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          error={
-            errors.sign_up_phone && touched.sign_up_phone
-              ? errors.sign_up_phone
-              : ''
-          }
-          placeholder={intl.formatMessage({
-            id: 'SIGN_UP.PHONE_INPUT',
-          })}
-        />
-        <Input
-          id="sign_up_password"
-          type="password"
-          value={values.sign_up_password}
-          label={intl.formatMessage({
-            id: 'SIGN_UP.PASSWORD_INPUT',
-          })}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          error={
-            errors.sign_up_password && touched.sign_up_password
-              ? errors.sign_up_password
-              : ''
-          }
-          placeholder={intl.formatMessage({
-            id: 'SIGN_UP.PASSWORD_INPUT',
-          })}
-        />
-        <Input
-          id="sign_up_confirm_password"
-          type="password"
-          value={values.sign_up_confirm_password}
-          label={intl.formatMessage({
-            id: 'SIGN_UP.REPEAT_PASSWORD_INPUT',
-          })}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          error={
-            errors.sign_up_confirm_password && touched.sign_up_confirm_password
-              ? errors.sign_up_confirm_password
-              : ''
-          }
-          placeholder={intl.formatMessage({
-            id: 'SIGN_UP.REPEAT_PASSWORD_INPUT',
-          })}
-        />
+    {(formikProps) => (
+      <form onSubmit={formikProps.handleSubmit} data-selector="sign_up-form">
+        {getInput({
+          intl,
+          mId: 'sign-up-name-input',
+          intlLabelId: 'SIGN_UP.NAME_INPUT',
+          intlPlaceholderId: 'SIGN_UP.NAME_INPUT',
+          ...formikProps,
+        })}
+        {getInput({
+          intl,
+          mId: 'sign-up-email-input',
+          intlLabelId: 'SIGN_UP.EMAIL_INPUT',
+          intlPlaceholderId: 'SIGN_UP.EMAIL_INPUT',
+          ...formikProps,
+        })}
+        {getInput({
+          intl,
+          mId: 'sign-up-phone-input',
+          intlLabelId: 'SIGN_UP.PHONE_NUMBER',
+          intlPlaceholderId: 'SIGN_UP.PHONE_INPUT',
+          ...formikProps,
+        })}
+        {getInput({
+          intl,
+          mId: 'sign-up-password-input',
+          intlLabelId: 'SIGN_UP.PASSWORD_INPUT',
+          intlPlaceholderId: 'SIGN_UP.PASSWORD_INPUT',
+          ...formikProps,
+        })}
+        {getInput({
+          intl,
+          mId: 'sign-up-confirm-password-input',
+          intlLabelId: 'SIGN_UP.REPEAT_PASSWORD_INPUT',
+          intlPlaceholderId: 'SIGN_UP.REPEAT_PASSWORD_INPUT',
+          ...formikProps,
+        })}
         <AgreementWrap>
           <Checkbox
-            id="sign_up_agreed"
-            checked={values.sign_up_agreed}
-            onChange={handleChange}
+            id="sign-up-privacy-agreed-checkbox"
+            checked={formikProps.values['sign-up-privacy-agreed-checkbox']}
+            onChange={formikProps.handleChange}
             label={
               <AgreementInner>
                 <span>
@@ -128,6 +102,7 @@ const SignUpForm = ({ intl, onSignUp, onDataProtection }) => (
                   title={intl.formatMessage({
                     id: 'SIGN_UP.TERMS_AND_AGREEMENT_LINK',
                   })}
+                  id="sign-up-privacy-policy-btn"
                 />
               </AgreementInner>
             }
@@ -138,12 +113,13 @@ const SignUpForm = ({ intl, onSignUp, onDataProtection }) => (
             type="submit"
             fullWidth
             disabled={
-              Object.values(values).some((e) => e === '') ||
-              !values.sign_up_agreed
+              Object.values(formikProps.values).some((e) => e === '') ||
+              !formikProps.values['sign-up-privacy-agreed-checkbox']
             }
             title={intl.formatMessage({
               id: 'SIGN_UP.SIGN_UP_BUTTON',
             })}
+            id="sign-up-submit-btn"
           />
         </ButtonsWrap>
       </form>
