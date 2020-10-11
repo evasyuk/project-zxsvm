@@ -14,8 +14,9 @@ jobs:
       - uses: actions/setup-node@v1
       - uses: actions/checkout@v2
       - run: npm install
-      - run: npm run test
       - run: npm run lint
+      - run: npm run test
+      - run: HEADLESS=true npm run codeceptjs
       - run: DOTENV=${{ secrets.DOTENV }} FIREBASE_RC=${{ secrets.FIREBASE_RC }} FIREBASE_JSON=${{ secrets.FIREBASE_JSON }} npm run use_secrets
       - run: npm run build
       - run: npm run deploy
