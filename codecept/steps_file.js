@@ -3,9 +3,13 @@
 
 module.exports = function() {
   return actor({
-
     // Define custom steps here, use 'this' to access default methods of I.
     // It is recommended to place a general 'login' function here.
 
+    updateField(fieldName, value = '') {
+      this.appendField(fieldName, value);
+      this.pressKey(['Shift', 'Home']);
+      this.pressKey('Backspace');
+    }
   });
 }
