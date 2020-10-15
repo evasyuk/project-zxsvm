@@ -34,7 +34,11 @@ class Profile extends Component {
     <ContactBlockWrapper times={1}>
       <ActionsBlockWrapper>
         <ActionWrapper>
-          <Button title={mIntl('CHANGE_PASSWORD')} onClick={onChangePassword} />
+          <Button
+            title={mIntl('CHANGE_PASSWORD')}
+            onClick={onChangePassword}
+            id="change-password-btn"
+          />
         </ActionWrapper>
         <ActionWrapper>
           <Button

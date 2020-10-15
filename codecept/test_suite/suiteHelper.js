@@ -44,5 +44,18 @@ const deleteUserActions = (I) => {
   I.amOnPage('http://localhost:8080/login')
 }
 
+const loginActions = (I, user) => {
+  I.updateField('#email', '')
+  I.updateField('#password', '')
+
+  I.fillField('#email', user.email)
+  I.fillField('#password', user.password)
+
+  I.click('#loginButton')
+
+  I.waitForElement('#delete-acc-btn', 30)
+}
+
 exports.registerUserActions = registerUserActions
 exports.deleteUserActions = deleteUserActions
+exports.loginActions = loginActions

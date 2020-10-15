@@ -1,4 +1,6 @@
 /* eslint-disable */
+const { registerUserActions, deleteUserActions } = require("../suiteHelper")
+
 Feature('testing signup page')
 
 Scenario('check "back to login" button', ({ I }) => {
@@ -48,25 +50,6 @@ Scenario('check "validation rules"', ({ I }) => {
 })
 
 Scenario('create new account', ({ I }) => {
-  I.amOnPage('http://localhost:8080/sign_up')
-  I.pressKey(["Shift", "G"])
-
-  const date = new Date()
-  const pseudo = + date
-  const phone = '+38' + `${pseudo}`.substr(2, 10)
-
-  I.fillField('#sign-up-name-input', `User`)
-  I.fillField('#sign-up-email-input', `dev.${pseudo}@dev.com`)
-  I.fillField('#sign-up-phone-input', phone)
-  I.fillField('#sign-up-password-input', `${pseudo}`)
-  I.fillField('#sign-up-confirm-password-input', `${pseudo}`)
-  I.click('#sign-up-privacy-agreed-checkbox')
-
-  I.click('#sign-up-submit-btn')
-
-  I.waitForElement('#delete-acc-btn', 30)
-  I.click('#delete-acc-btn')
-  I.fillField('#delete-acc-input', `delete account`)
-  I.click('#delete-account-confirm-btn')
-  I.amOnPage('http://localhost:8080/login')
+  registerUserActions(I)
+  deleteUserActions(I)
 })

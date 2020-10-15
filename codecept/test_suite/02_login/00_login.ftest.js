@@ -1,5 +1,5 @@
 /* eslint-disable */
-const { registerUserActions, deleteUserActions } = require("../suiteHelper")
+const { registerUserActions, deleteUserActions, loginActions } = require("../suiteHelper")
 
 Feature('testing login page')
 
@@ -11,15 +11,7 @@ Scenario('check "login" functionality', ({ I }) => {
     I.pressKey(["Shift", "G"])
     I.amOnPage('http://localhost:8080/login')
 
-    I.updateField('#email', '')
-    I.updateField('#password', '')
-
-    I.fillField('#email', user.email)
-    I.fillField('#password', user.password)
-
-    I.click('#loginButton')
-
-    I.waitForElement('#delete-acc-btn', 30)
+    loginActions(I, user)
   } catch (error) {
     console.log(error)
   } finally {
