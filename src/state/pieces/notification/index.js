@@ -1,3 +1,6 @@
+import {LOGOUT_TYPE} from "../auth";
+import {defaultStateModal} from "../modals";
+
 const NOTIFICATION_TYPES = {
   ERROR: 'error',
   DEFAULT: 'default',
@@ -65,6 +68,8 @@ export const reducerNotifications = (state = defaultState, action) => {
         ...state,
         messageQueue: [],
       }
+    case LOGOUT_TYPE:
+      return defaultStateModal
     default:
       return state
   }

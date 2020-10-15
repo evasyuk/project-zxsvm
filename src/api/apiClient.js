@@ -1,6 +1,5 @@
 /* eslint-disable no-underscore-dangle */
 import axios from 'axios'
-// import { setMissingAuth } from '../state/actions'
 
 import { API_URL, TOKEN } from '../constants'
 
@@ -41,7 +40,6 @@ class ApiClient {
           error?.response?.request?.responseURL &&
           !error.response.request.responseURL.endsWith('login')
         ) {
-          // store.dispatch(setMissingAuth())
           console.log('axios response error', 'login')
         }
         return Promise.reject(error)

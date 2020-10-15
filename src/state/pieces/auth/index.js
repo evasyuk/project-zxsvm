@@ -36,11 +36,6 @@ const defaultState = {
   userRecord: null,
 }
 
-export const setMissingAuth = () => ({
-  type: TYPES_AUTH.MISSING_AUTH,
-  update: { missingAuth: true },
-})
-
 export const logout = () => ({
   type: LOGOUT_TYPE,
 })

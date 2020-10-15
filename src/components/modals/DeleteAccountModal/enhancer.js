@@ -9,6 +9,7 @@ import { injectIntl } from 'react-intl'
 import { getModalState } from '../../../state/selectors'
 import { changeModalState } from '../../../state/pieces/modals'
 
+import { logout } from '../../../state/pieces/auth'
 import { deleteAccount } from '../../../state/pieces/users'
 
 const mapStateToProps = (state) => ({
@@ -17,6 +18,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   deleteAccountRequest: deleteAccount,
+  logout,
 
   openDeleteAccModal: changeModalState('deleteAccountModal', true),
   closeDeleteAccModal: changeModalState('deleteAccountModal', false),
@@ -27,6 +29,7 @@ function enhancer(ComposedComponent) {
     static propTypes = {
       intl: object.isRequired,
       deleteAccountRequest: func.isRequired,
+      logout: func.isRequired,
 
       isDeleteAccModalOpen: bool.isRequired,
 
@@ -42,6 +45,7 @@ function enhancer(ComposedComponent) {
 
     onDeleteAccount = () => {
       this.props.deleteAccountRequest()
+      setTimeout(this.props.logout, 5000)
     }
 
     render() {

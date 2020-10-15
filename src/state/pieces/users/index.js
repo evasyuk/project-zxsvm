@@ -1,8 +1,9 @@
-import { logout } from '../auth'
+import {logout, LOGOUT_TYPE} from '../auth'
 
 import { getApiTypes } from '../../../helpers/getApiMiddlewareTypes'
 import { onActionFailure } from '../../../helpers/onActionFailure'
 import { showSuccessNotification } from '../notification'
+import {defaultStateModal} from "../modals";
 
 const CHANGE_PWD_TYPES = {
   REQUEST: 'change_pwd_started',
@@ -88,6 +89,8 @@ export const reducerUsers = (state = defaultStateUsers, action) => {
         ...state,
         ...action.update,
       }
+    case LOGOUT_TYPE:
+      return defaultStateModal
     default:
       return state
   }

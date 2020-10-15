@@ -1,3 +1,5 @@
+import {LOGOUT_TYPE} from "../auth";
+
 export const TYPES_MODALS = {
   CHANGE_MODAL_STATE: 'change_modal_state',
 }
@@ -21,6 +23,8 @@ export const reducerModals = (state = defaultStateModal, action) => {
           ...action.update,
         },
       }
+    case LOGOUT_TYPE:
+      return defaultStateModal
     default:
       return state
   }
