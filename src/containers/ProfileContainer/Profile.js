@@ -35,6 +35,7 @@ class Profile extends Component {
       <ActionsBlockWrapper>
         <ActionWrapper>
           <Button
+            fullWidth
             title={mIntl('CHANGE_PASSWORD')}
             onClick={onChangePassword}
             id="change-password-btn"
@@ -42,6 +43,7 @@ class Profile extends Component {
         </ActionWrapper>
         <ActionWrapper>
           <Button
+            fullWidth
             title={mIntl('DELETE_ACCOUNT')}
             onClick={onDeletePassword}
             id="delete-acc-btn"
