@@ -1,5 +1,5 @@
-import {LOGOUT_TYPE} from "../auth";
-import {defaultStateModal} from "../modals";
+import { LOGOUT_TYPE } from '../auth'
+import { defaultStateModal } from '../modals'
 
 const NOTIFICATION_TYPES = {
   ERROR: 'error',

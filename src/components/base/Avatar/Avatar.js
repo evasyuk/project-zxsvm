@@ -8,7 +8,7 @@ import { AvatarWrapper } from './styles'
 // 	 upload
 // 	 create different sizes
 const Avatar = ({ imageUrl }) => (
-  <AvatarWrapper>
+  <AvatarWrapper id="avatar">
     {imageUrl ? (
       <img src={imageUrl} alt="avatar" />
     ) : (

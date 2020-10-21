@@ -16,6 +16,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   openChangePwdModal: changeModalState('changePasswordModal', true),
   openDeleteAccModal: changeModalState('deleteAccountModal', true),
+  openProfilePhotoModal: changeModalState('profilePhotoModal', true),
 }
 
 function enhancer(ComposedComponent) {
@@ -25,6 +26,7 @@ function enhancer(ComposedComponent) {
 
       openChangePwdModal: func.isRequired,
       openDeleteAccModal: func.isRequired,
+      openProfilePhotoModal: func.isRequired,
     }
 
     mIntl = (element, group = 'PROFILE') =>

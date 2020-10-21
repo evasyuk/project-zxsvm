@@ -13,7 +13,6 @@ import { changePassword } from '../../../state/pieces/users'
 
 const mapStateToProps = (state) => ({
   isChangePwdModalOpen: getModalState('changePasswordModal')(state),
-  isDeleteAccModalOpen: getModalState('deleteAccountModal')(state),
 })
 
 const mapDispatchToProps = {

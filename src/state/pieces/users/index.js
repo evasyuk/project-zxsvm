@@ -1,9 +1,9 @@
-import {logout, LOGOUT_TYPE} from '../auth'
+import { logout, LOGOUT_TYPE } from '../auth'
 
 import { getApiTypes } from '../../../helpers/getApiMiddlewareTypes'
 import { onActionFailure } from '../../../helpers/onActionFailure'
 import { showSuccessNotification } from '../notification'
-import {defaultStateModal} from "../modals";
+import { defaultStateModal } from '../modals'
 
 const CHANGE_PWD_TYPES = {
   REQUEST: 'change_pwd_started',
@@ -17,11 +17,26 @@ const DELETE_ACC_TYPES = {
   FAILURE: 'delete_acc_failure',
 }
 
+const DELETE_PHOTO_TYPES = {
+  REQUEST: 'delete_photo_started',
+  SUCCESS: 'delete_photo_success',
+  FAILURE: 'delete_photo_failure',
+}
+
+const UPLOAD_PHOTO_TYPES = {
+  REQUEST: 'upload_photo_started',
+  SUCCESS: 'upload_photo_success',
+  FAILURE: 'upload_photo_failure',
+}
+
 export const TYPES_USERS = {
   SET_MY_USER: 'set_my_user',
 
   CHANGE_PWD: CHANGE_PWD_TYPES,
   DELETE_ACC: DELETE_ACC_TYPES,
+
+  DELETE_PHOTO: DELETE_PHOTO_TYPES,
+  UPLOAD_PHOTO: UPLOAD_PHOTO_TYPES,
 }
 
 export const defaultStateUsers = {
@@ -47,13 +62,51 @@ export const deleteAccount = (callbacks) => ({
   callbacks,
 })
 
+export const deletePhoto = (callbacks) => ({
+  types: getApiTypes(DELETE_PHOTO_TYPES),
+  promise: (api) => api.users.deletePhoto(),
+  callbacks,
+})
+
+export const uploadPhoto = (data, callbacks) => ({
+  types: getApiTypes(UPLOAD_PHOTO_TYPES),
+  promise: (api) => api.users.uploadPhoto(data),
+  callbacks,
+})
+
 export const reducerUsers = (state = defaultStateUsers, action) => {
   switch (action.type) {
+    case TYPES_USERS.UPLOAD_PHOTO.REQUEST:
+    case TYPES_USERS.DELETE_PHOTO.REQUEST:
     case TYPES_USERS.DELETE_ACC.REQUEST:
     case TYPES_USERS.CHANGE_PWD.REQUEST:
       return {
         ...state,
         requestInProgress: true,
+      }
+    case TYPES_USERS.UPLOAD_PHOTO.SUCCESS:
+      action.asyncDispatch(
+        showSuccessNotification({ message: 'SUCCESS.PHOTO_UPDATED' }),
+      )
+      if (action?.callbacks?.onSuccess) {
+        action.asyncDispatch(action.callbacks.onSuccess)
+      }
+
+      action.asyncDispatch(setMyUser(action.data.userRecord))
+      return {
+        ...state,
+        ...action.update,
+        requestInProgress: false,
+      }
+    case TYPES_USERS.DELETE_PHOTO.SUCCESS:
+      action.asyncDispatch(
+        showSuccessNotification({ message: 'SUCCESS.PHOTO_DELETED' }),
+      )
+      // TODO: new user record has arrive here
+      return {
+        ...state,
+        ...action.update,
+        requestInProgress: false,
       }
     case TYPES_USERS.DELETE_ACC.SUCCESS:
       action.asyncDispatch(logout())
@@ -72,6 +125,8 @@ export const reducerUsers = (state = defaultStateUsers, action) => {
         ...state,
         requestInProgress: false,
       }
+    case TYPES_USERS.DELETE_PHOTO.FAILURE:
+    case TYPES_USERS.UPLOAD_PHOTO.FAILURE:
     case TYPES_USERS.DELETE_ACC.FAILURE:
     case TYPES_USERS.CHANGE_PWD.FAILURE:
       if (action?.callbacks?.onFailure) {

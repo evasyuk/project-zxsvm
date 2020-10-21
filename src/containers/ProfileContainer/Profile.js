@@ -19,20 +19,34 @@ import {
 
 import ChangePasswordModal from '../../components/modals/ChangePasswordModal'
 import DeleteAccountModal from '../../components/modals/DeleteAccountModal'
+import ProfilePhotoModal from '../../components/modals/ProfilePhotoModal'
 
 class Profile extends Component {
-  renderContactBlock = ({ displayName, phoneNumber, email }) => (
+  renderContactBlock = ({ displayName, phoneNumber, email, photoURL }) => (
     <ContactBlockWrapper times={2}>
-      <Avatar imageUrl={null} />
+      <Avatar imageUrl={photoURL} />
       <Title title={displayName} />
       <Title title={phoneNumber} />
       <Title title={email} />
     </ContactBlockWrapper>
   )
 
-  renderActionsBlock = ({ mIntl, onChangePassword, onDeletePassword }) => (
+  renderActionsBlock = ({
+    mIntl,
+    onChangePassword,
+    onDeletePassword,
+    onPhoto,
+  }) => (
     <ContactBlockWrapper times={1}>
       <ActionsBlockWrapper>
+        <ActionWrapper>
+          <Button
+            fullWidth
+            title={mIntl('UPDATE_PHOTO_BTN')}
+            onClick={onPhoto}
+            id="change-photo-btn"
+          />
+        </ActionWrapper>
         <ActionWrapper>
           <Button
             fullWidth
@@ -54,23 +68,31 @@ class Profile extends Component {
   )
 
   renderMobile = ({
+    photoURL,
     displayName,
     phoneNumber,
     email,
     mIntl,
     onChangePassword,
     onDeletePassword,
+    onPhoto,
   }) => (
     <MobileWindow>
       <MobileNoContent />
 
       <MobileMainContent>
         <MobileMainSection>
-          {this.renderContactBlock({ displayName, phoneNumber, email })}
+          {this.renderContactBlock({
+            displayName,
+            phoneNumber,
+            email,
+            photoURL,
+          })}
           {this.renderActionsBlock({
             mIntl,
             onChangePassword,
             onDeletePassword,
+            onPhoto,
           })}
         </MobileMainSection>
       </MobileMainContent>
@@ -80,7 +102,13 @@ class Profile extends Component {
   )
 
   render() {
-    const { myUser, mIntl, openChangePwdModal, openDeleteAccModal } = this.props
+    const {
+      myUser,
+      mIntl,
+      openChangePwdModal,
+      openDeleteAccModal,
+      openProfilePhotoModal,
+    } = this.props
 
     // TODO: fix bug with crash on myUser === null
     if (!myUser?.displayName) {
@@ -90,17 +118,20 @@ class Profile extends Component {
     return (
       <>
         <ModalWrapper>
+          <ProfilePhotoModal />
           <ChangePasswordModal />
           <DeleteAccountModal />
         </ModalWrapper>
         <div>
           {this.renderMobile({
+            photoURL: myUser.photoURL,
             displayName: myUser.displayName,
             phoneNumber: myUser.phoneNumber,
             email: myUser.email,
             mIntl,
             onChangePassword: openChangePwdModal,
             onDeletePassword: openDeleteAccModal,
+            onPhoto: openProfilePhotoModal,
           })}
         </div>
       </>
@@ -113,6 +144,7 @@ Profile.propTypes = {
   mIntl: func.isRequired,
   openChangePwdModal: func.isRequired,
   openDeleteAccModal: func.isRequired,
+  openProfilePhotoModal: func.isRequired,
 }
 
 export default Profile

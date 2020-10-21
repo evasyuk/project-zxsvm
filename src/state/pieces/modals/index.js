@@ -1,4 +1,4 @@
-import {LOGOUT_TYPE} from "../auth";
+import { LOGOUT_TYPE } from '../auth'
 
 export const TYPES_MODALS = {
   CHANGE_MODAL_STATE: 'change_modal_state',

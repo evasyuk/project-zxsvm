@@ -3,6 +3,8 @@ const translations = {
   lang_key: 'en',
   SUCCESS: {
     PWD_CHANGED: 'Password changed successfully',
+    PHOTO_UPDATED: 'Photo changed successfully',
+    PHOTO_DELETED: 'Photo deleted successfully',
   },
   ERROR: {
     AUTH: {
@@ -10,8 +12,14 @@ const translations = {
       VALIDATION_ERROR: 'Invalid users data',
       EMAIL_ALREADY_IN_USE: 'Email(or phone) already in use',
       TOKEN_NOT_FOUND: 'Network request requires token',
+      WRONG_TOKEN: 'Authorization required',
     },
     'Network Error': 'Server is unavailable at this moment',
+    MEDIA: {
+      FILE_IS_EMPTY: 'Empty file received',
+      SUPPORTED_JPEG_JPG_PNG: 'Supported formats: jpeg, jpg, png',
+      FILE_SIZE_2MB_EXCEEDED: 'File size exceeds limit of 2 MB',
+    },
   },
   LANDING: {
     MORE_ON: 'More on',
@@ -78,6 +86,9 @@ const translations = {
 
     PWD_CHANGE_BTN: 'Change password',
     DELETE_ACC_BTN: 'Delete account',
+
+    UPDATE_PHOTO_BTN: 'Update photo',
+    UPDATE_PHOTO_TITLE: 'Update photo',
   },
 }
 
