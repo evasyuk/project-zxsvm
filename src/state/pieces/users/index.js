@@ -102,10 +102,19 @@ export const reducerUsers = (state = defaultStateUsers, action) => {
       action.asyncDispatch(
         showSuccessNotification({ message: 'SUCCESS.PHOTO_DELETED' }),
       )
-      // TODO: new user record has arrive here
+      if (action?.callbacks?.onSuccess) {
+        action.asyncDispatch(action.callbacks.onSuccess)
+      }
+
+      action.asyncDispatch(
+        setMyUser({
+          ...state.myUser,
+          photoURL: null,
+        }),
+      )
+
       return {
         ...state,
-        ...action.update,
         requestInProgress: false,
       }
     case TYPES_USERS.DELETE_ACC.SUCCESS:

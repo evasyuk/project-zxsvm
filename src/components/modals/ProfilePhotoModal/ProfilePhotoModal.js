@@ -13,7 +13,7 @@ import {
 
 import { Title } from '../../base'
 
-const renderMobile = ({ mIntl, onFile }) => (
+const renderMobile = ({ mIntl, onFile, onDelete }) => (
   <MobileWindow>
     <MobileNoContent />
 
@@ -24,6 +24,9 @@ const renderMobile = ({ mIntl, onFile }) => (
           <MobileTopWrapper>
             <form>
               <input type="file" accept="image/*" onChange={onFile} />
+              <button type="button" onClick={onDelete}>
+                Delete
+              </button>
             </form>
           </MobileTopWrapper>
         </MobileTopWrapper>
@@ -39,7 +42,7 @@ const ProfilePhotoModal = ({
   close,
   intl,
   mIntl,
-  deleteCurrentPicture,
+  onDelete,
   onFile,
 }) => (
   <Modal
@@ -57,8 +60,8 @@ const ProfilePhotoModal = ({
     {renderMobile({
       intl,
       mIntl,
-      deleteCurrentPicture,
       onFile,
+      onDelete,
     })}
   </Modal>
 )
@@ -69,7 +72,7 @@ ProfilePhotoModal.propTypes = {
   intl: object.isRequired,
   mIntl: func.isRequired,
   onFile: func.isRequired,
-  deleteCurrentPicture: func.isRequired,
+  onDelete: func.isRequired,
 }
 
 export default ProfilePhotoModal

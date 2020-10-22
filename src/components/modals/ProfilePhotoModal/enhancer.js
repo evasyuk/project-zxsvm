@@ -34,21 +34,26 @@ function enhancer(ComposedComponent) {
       closeProfilePhotoModal: func.isRequired,
     }
 
+    _getCallbacks = () => {
+      let onSuccess, onFailure
+      onSuccess = onFailure = this.props.closeProfilePhotoModal
+      return { onSuccess, onFailure }
+    }
+
     mIntl = (element, group = 'PROFILE') =>
       this.props.intl.formatMessage({
         id: `${group}.${element}`,
       })
 
     onFile = (e) => {
-      let onSuccess, onFailure
-      onSuccess = onFailure = this.props.closeProfilePhotoModal
       const data = new FormData()
       data.append('picture', e.target.files[0])
-      this.props.uploadPhotoRequest(data, { onSuccess, onFailure })
+      this.props.uploadPhotoRequest(data, this._getCallbacks())
     }
 
-    deleteCurrentPicture = () => {
-      this.props.deletePhotoRequest()
+    onDelete = () => {
+      console.log('wtf')
+      this.props.deletePhotoRequest(this._getCallbacks())
     }
 
     render() {
@@ -58,11 +63,10 @@ function enhancer(ComposedComponent) {
         <ComposedComponent
           {...this.props}
           mIntl={this.mIntl}
-          uploadNewPicture={this.uploadNewPicture}
-          deleteCurrentPicture={this.deleteCurrentPicture}
           isOpen={isProfilePhotoModalOpen}
           close={closeProfilePhotoModal}
           onFile={this.onFile}
+          onDelete={this.onDelete}
         />
       )
     }
