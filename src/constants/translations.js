@@ -89,6 +89,7 @@ const translations = {
 
     UPDATE_PHOTO_BTN: 'Update photo',
     UPDATE_PHOTO_TITLE: 'Update photo',
+    DELETE_PHOTO_BTN: 'Delete photo',
   },
 }
 

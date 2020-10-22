@@ -19,14 +19,21 @@ const renderMobile = ({ mIntl, onFile, onDelete }) => (
 
     <MobileMainContent>
       <MobileMainSection>
-        <MobileTopWrapper times={1}>
+        <MobileTopWrapper times={null}>
           <Title title={mIntl('UPDATE_PHOTO_TITLE')} />
           <MobileTopWrapper>
             <form>
-              <input type="file" accept="image/*" onChange={onFile} />
-              <button type="button" onClick={onDelete}>
-                Delete
-              </button>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={onFile}
+                id="upload-file-input"
+              />
+              <MobileTopWrapper times={1}>
+                <button type="button" onClick={onDelete} id="delete-photo-btn">
+                  {mIntl('DELETE_PHOTO_BTN')}
+                </button>
+              </MobileTopWrapper>
             </form>
           </MobileTopWrapper>
         </MobileTopWrapper>

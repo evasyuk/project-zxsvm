@@ -10,9 +10,9 @@ import { AvatarWrapper } from './styles'
 const Avatar = ({ imageUrl }) => (
   <AvatarWrapper id="avatar">
     {imageUrl ? (
-      <img src={imageUrl} alt="avatar" />
+      <img src={imageUrl} id="avatar-img" alt="avatar" />
     ) : (
-      <Icon name="avatar" size={100} alt="avatar" />
+      <Icon name="avatar" size={100} id="no-avatar-img" alt="avatar" />
     )}
   </AvatarWrapper>
 )

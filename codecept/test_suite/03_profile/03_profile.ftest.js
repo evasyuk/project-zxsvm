@@ -29,3 +29,29 @@ Scenario('check change password', ({ I }) => {
     deleteUserActions(I)
   }
 })
+
+Scenario('change profile picture', ({ I }) => {
+  const user = registerUserActions(I)
+
+  try {
+    I.waitForElement('#no-avatar-img')
+
+    I.click('#change-photo-btn')
+
+    I.attachFile('#upload-file-input', './codecept/assets/test_profile_picture.png')
+
+    I.waitForElement('#avatar-img', 30)
+
+    // testing "delete" functionality
+    I.click('#change-photo-btn')
+
+    I.waitForElement('#delete-photo-btn')
+    I.click('#delete-photo-btn')
+
+    I.waitForElement('#no-avatar-img', 30)
+  } catch (error) {
+    console.log(error)
+  } finally {
+    deleteUserActions(I)
+  }
+})

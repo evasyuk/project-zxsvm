@@ -21,7 +21,8 @@ export const TopBackground = styled.div`
 `
 
 export const MobileTopWrapper = styled.div`
-  margin-top: ${(props) => `calc(35px * ${props?.times || 1})`};
+  margin-top: ${(props) =>
+    props.times === null ? '0' : `calc(35px * ${props?.times || 1})`};
   text-align: center;
 `
 
