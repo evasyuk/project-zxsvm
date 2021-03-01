@@ -1,0 +1,89 @@
+{
+  "lang_label": "Русский",
+  "lang_key": "ru",
+  "SUCCESS": {
+    "PWD_CHANGED": "Пароль успешно изменен",
+    "PHOTO_UPDATED": "Фотография успешно изменена",
+    "PHOTO_DELETED": "Фотография успешно удалена"
+  },
+  "ERROR": {
+    "AUTH": {
+      "NOT_FOUND": "Таких пользователей в системе нет",
+      "VALIDATION_ERROR": "Неверные данные пользователей",
+      "EMAIL_ALREADY_IN_USE": "Электронная почта (или телефон) уже используется",
+      "TOKEN_NOT_FOUND": "Для сетевого запроса требуется токен",
+      "WRONG_TOKEN": "Требуется Авторизация"
+    },
+    "Network Error": "Сервер в данный момент недоступен",
+    "MEDIA": {
+      "FILE_IS_EMPTY": "Получен пустой файл",
+      "SUPPORTED_JPEG_JPG_PNG": "Поддерживаемые форматы: jpeg, jpg, png",
+      "FILE_SIZE_2MB_EXCEEDED": "Размер файла превышает предел 2 МБ"
+    }
+  },
+  "LANDING": {
+    "MORE_ON": "Еще"
+  },
+  "LOG_IN": {
+    "EMAIL_INPUT": "Электронное письмо",
+    "PASSWORD_INPUT": "Пароль",
+    "TITLE": "Авторизация",
+    "BUTTON": "Авторизация",
+    "SIGN_UP_LINK": "Зарегестрироваться!",
+    "SIGN_UP_LINK_MOBILE": "Регистрация",
+    "NO_ACCOUNT": "Нет аккаунта?",
+    "CREATE_NEW_ONE": "Создать аккаунт"
+  },
+  "SIGN_UP": {
+    "TITLE": "Регистрация",
+    "ALREADY_REGISTERED": "Уже есть аккаунт?",
+    "BACK_TO_LOGIN": "Назад к логину",
+    "NAME_INPUT": "Имя пользователя",
+    "PHONE_NUMBER": "Номер телефона",
+    "PHONE_INPUT": "+380731234567",
+    "EMAIL_INPUT": "Почтовый ящик",
+    "PASSWORD_INPUT": "Пароль",
+    "REPEAT_PASSWORD_INPUT": "Повторите пароль",
+    "SIGN_UP_BUTTON": "Sign up",
+    "CANCEL_BUTTON": "Отмена",
+    "TERMS_AND_AGREEMENT_LABEL": "Я согласен с",
+    "TERMS_AND_AGREEMENT_LINK": "политикой конфиденциальности"
+  },
+  "VALIDATION_ERRORS": {
+    "EMAIL_REQUIRED": "Необходим email",
+    "EMAIL_INVALID": "Неправильный email",
+    "PASSWORD_REQUIRED": "Требуется пароль",
+    "PASSWORD_NOT_MATCH": "Пароли не сов падают",
+    "CONFIRM_PASSWORD_REQUIRED": "Требуется подтверждение пароля",
+    "CURRENT_PASSWORD_REQUIRED": "Требуется текущий пароль",
+    "NEW_PASSWORD_REQUIRED": "Требуется новый пароль",
+    "PASSWORD_MIN_LENGTH": "Пароль должен содержать, хотя бы, {count} знаков, символы верхнего и нижнего регистра, число и специальный символ",
+    "NAME_MIN_LENGTH": "Имя должно быть длинной, хотя бы, {count} знаков",
+    "NAME_MAX_LENGTH": "Имя должно быть длинной, не более чем {count} знаков",
+    "NAME_ONLY_ALPHABET": "Имя должно содержать только символы азбуки",
+    "NAME_REQUIRED": "Требуется имя",
+    "LAST_NAME_REQUIRED": "Требуется фамилия",
+    "PHONE_NUMBER_INVALID": "Неправильный формат телефона",
+    "PHONE_NUMBER_REQUIRED": "Требуется номер телефона",
+    "PASSWORD_REPEAT_REQUIRED": "Требуется подтверждение пароля",
+    "DELETE_ACC_MISMATCH": "введите \"delete account\"",
+    "DELETE_ACC_CONFIRMATION_REQUIRED": "Требуется подтвеждение удаления аккаунта"
+  },
+  "HEADER": {
+    "PROFILE": "Профиль",
+    "SETTINGS": "Настройки",
+    "LOG_OUT": "Выйти"
+  },
+  "PROFILE": {
+    "CHANGE_PASSWORD": "Сменить пароль",
+    "DELETE_ACCOUNT": "Удалить аккаунт",
+    "PASSWORD_LABEL": "Пароль",
+    "PASSWORD_REPEAT_LABEL": "Повторить пароль",
+    "DELETE_ACC_LABEL": "Подтвердите намерение: введите \"delete account\"",
+    "PWD_CHANGE_BTN": "Изменить пароль",
+    "DELETE_ACC_BTN": "Удалить аккаунт",
+    "UPDATE_PHOTO_BTN": "Обновить фото",
+    "UPDATE_PHOTO_TITLE": "Обновить фото",
+    "DELETE_PHOTO_BTN": "Удалить фото"
+  }
+}

@@ -57,7 +57,7 @@
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.3.0",
     "image-webpack-loader": "4.6.0",
-    "playwright": "^1.4.2",
+    "playwright": "^1.9.1-1614629120000",
     "prettier": "^2.1.1",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",

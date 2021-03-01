@@ -1,0 +1,89 @@
+{
+  "lang_label": "Українська",
+  "lang_key": "ua",
+  "SUCCESS": {
+    "PWD_CHANGED": "Пароль успішно змінено",
+    "PHOTO_UPDATED": "Фото успішно оновлено",
+    "PHOTO_DELETED": "Фото успішно видалено"
+  },
+  "ERROR": {
+    "AUTH": {
+      "NOT_FOUND": "Немає такого користувача",
+      "VALIDATION_ERROR": "Введено дані з помилкою",
+      "EMAIL_ALREADY_IN_USE": "Поштова скриня(або телефон) вже використані кимось",
+      "TOKEN_NOT_FOUND": "Мережевий запит потребує авторизації",
+      "WRONG_TOKEN": "Потрібно пройти авторизацію"
+    },
+    "Network Error": "Сервер не відповідає на мережеві запити",
+    "MEDIA": {
+      "FILE_IS_EMPTY": "Завантажено пустий файл",
+      "SUPPORTED_JPEG_JPG_PNG": "Підтримувані формати: jpeg, jpg, png",
+      "FILE_SIZE_2MB_EXCEEDED": "Розмір файлу перевищує обмеження в 2 МБ"
+    }
+  },
+  "LANDING": {
+    "MORE_ON": "Більше інфи: тут"
+  },
+  "LOG_IN": {
+    "EMAIL_INPUT": "Поштова скриня",
+    "PASSWORD_INPUT": "Пароль",
+    "TITLE": "Логін",
+    "BUTTON": "Логін",
+    "SIGN_UP_LINK": "Зареєструватись!",
+    "SIGN_UP_LINK_MOBILE": "Зареєструватись",
+    "NO_ACCOUNT": "Немає аккаунта?",
+    "CREATE_NEW_ONE": "Створити аккаунт"
+  },
+  "SIGN_UP": {
+    "TITLE": "Зареєструватись",
+    "ALREADY_REGISTERED": "Вже є аккаунт?",
+    "BACK_TO_LOGIN": "Назад до входу",
+    "NAME_INPUT": "Ім'я  користувача",
+    "PHONE_NUMBER": "Номер телефону",
+    "PHONE_INPUT": "+380731234567",
+    "EMAIL_INPUT": "Поштова скриня",
+    "PASSWORD_INPUT": "Пароль",
+    "REPEAT_PASSWORD_INPUT": "Повторіть пароль",
+    "SIGN_UP_BUTTON": "Зареєструватись",
+    "CANCEL_BUTTON": "Відмінити",
+    "TERMS_AND_AGREEMENT_LABEL": "Я погоджуюсь з",
+    "TERMS_AND_AGREEMENT_LINK": "політикою конфіденційності"
+  },
+  "VALIDATION_ERRORS": {
+    "EMAIL_REQUIRED": "Потрібна поштова скриня",
+    "EMAIL_INVALID": "Хибна поштова скриня",
+    "PASSWORD_REQUIRED": "Потрібен пароль",
+    "PASSWORD_NOT_MATCH": "Паролі різняться",
+    "CONFIRM_PASSWORD_REQUIRED": "Необхідне підтпердження паролю",
+    "CURRENT_PASSWORD_REQUIRED": "Потрібен діючий пароль",
+    "NEW_PASSWORD_REQUIRED": "Потрібен новий пароль",
+    "PASSWORD_MIN_LENGTH": "Пароль повинен містити, хоча б, {count} знаків, верхню та нижню літерацію, число та спеціальний символ",
+    "NAME_MIN_LENGTH": "Ім'я мусить містити, хоча б, {count} знаків",
+    "NAME_MAX_LENGTH": "Ім'я має бути не довшим, ніж {count} знаків",
+    "NAME_ONLY_ALPHABET": "Ім'я мусить містити тільки символи з абетки",
+    "NAME_REQUIRED": "Необхідне ім'я",
+    "LAST_NAME_REQUIRED": "Необхідне призвище",
+    "PHONE_NUMBER_INVALID": "Хибний формат номеру",
+    "PHONE_NUMBER_REQUIRED": "Необхідний номер телефону",
+    "PASSWORD_REPEAT_REQUIRED": "Confirm password is required",
+    "DELETE_ACC_MISMATCH": "введіть \"delete account\"",
+    "DELETE_ACC_CONFIRMATION_REQUIRED": "Необхідне підтвердження на видалення аккаунту"
+  },
+  "HEADER": {
+    "PROFILE": "Профіль",
+    "SETTINGS": "Налаштування",
+    "LOG_OUT": "Вийти"
+  },
+  "PROFILE": {
+    "CHANGE_PASSWORD": "Змінити пароль",
+    "DELETE_ACCOUNT": "Видалити аккаунт",
+    "PASSWORD_LABEL": "Пароль",
+    "PASSWORD_REPEAT_LABEL": "Повторити пароль",
+    "DELETE_ACC_LABEL": "Підтвердіть свій намір: введіть \"delete account\"",
+    "PWD_CHANGE_BTN": "Змінити пароль",
+    "DELETE_ACC_BTN": "Видалити аккаунт",
+    "UPDATE_PHOTO_BTN": "Оновити фото",
+    "UPDATE_PHOTO_TITLE": "Оновити фото",
+    "DELETE_PHOTO_BTN": "Видалити фото"
+  }
+}

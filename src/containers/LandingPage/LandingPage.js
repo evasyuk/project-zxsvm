@@ -7,6 +7,14 @@ import { Column, TitleSection } from './styles'
 import { Button, Text } from '../../components/base'
 import { MobileTopWrapper } from '../../components/styles'
 
+import { LanguageSelect } from '../../components/controlled'
+
+const ChangeLanguage = () => (
+  <MobileTopWrapper>
+    <LanguageSelect />
+  </MobileTopWrapper>
+)
+
 const MoreOnGithub = ({ mIntl, goToGithub }) => (
   <MobileTopWrapper>
     <Text>{mIntl('MORE_ON')}</Text>
@@ -20,6 +28,7 @@ const FirstSection = ({ mIntl, goToGithub }) => (
   <TitleSection>
     <h1>ZXSVM</h1>
     <MoreOnGithub mIntl={mIntl} goToGithub={goToGithub} />
+    <ChangeLanguage />
   </TitleSection>
 )
 

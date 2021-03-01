@@ -1,6 +1,17 @@
 /* eslint-disable */
 Feature('testing landing page')
 
+Scenario('check locales', ({ I }) => {
+  I.amOnPage('http://localhost:8080')
+  I.pressKey(["Shift", "G"])
+
+  I.seeElement('#github-btn')
+  I.seeElement('#lang-key-ua')
+  I.seeElement('#lang-key-en')
+
+  // TODO: check how language is changed
+})
+
 Scenario('check github button', ({ I }) => {
   I.amOnPage('http://localhost:8080')
   I.pressKey(["Shift", "G"])

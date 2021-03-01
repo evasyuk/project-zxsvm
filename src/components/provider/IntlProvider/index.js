@@ -1,17 +1,17 @@
+/* eslint-disable camelcase */
 import React from 'react'
 import { useSelector } from 'react-redux'
 import 'intl'
 import { IntlProvider as ReactIntlProvider } from 'react-intl'
 
-import { getFlatTranslations } from '../../../state/selectors'
+import { getActiveTranslation } from '../../../state/selectors'
 
 const IntlProvider = (props) => {
-  const { locale, messages } = useSelector((state) => ({
-    locale: 'en',
-    messages: getFlatTranslations(state),
-  }))
+  const { lang_key, dictionary } = useSelector(getActiveTranslation)
 
-  return <ReactIntlProvider locale={locale} messages={messages} {...props} />
+  return (
+    <ReactIntlProvider locale={lang_key} messages={dictionary} {...props} />
+  )
 }
 
 export default IntlProvider
